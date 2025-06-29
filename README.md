@@ -1,1 +1,2 @@
-Notes of books and papers
+leetcode: summary of some exercises and cpp knowledge. 
+
