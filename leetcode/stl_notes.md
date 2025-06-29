@@ -6,7 +6,7 @@
 
 #### vector: 
 ##### initialization
-- default initialization: vector`<int>` v;
+- default initialization: `vector<int> v`;
 - size initialization: vector`<int>`v(size, value);
 - copy initialization: vector`<int>`v_copy(v);
 ##### access
