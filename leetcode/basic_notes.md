@@ -7,6 +7,7 @@
 - Virtual functions are crucial for achieving polymorphism. When a base class method is marked as virtual, the program uses the derived class method if the object is of a derived type.
 - For derived class, methods from the base class can be used if they are protected or public.
 
+'''
 // Base class
 class Car{
 private:
@@ -14,61 +15,50 @@ private:
     int year;
 
 public:
-
     //constructor
     Car (string brand, int year){
         this->brand = brand;
         this->year = year;
     }
-
     //destructor
     // Virtual destructor for proper cleanup in derived classes
     virtual ~Car() {
         cout << "Car object destroyed" << endl;
     }
-
     //to set brand
     void set_brand(string brand){
         this->brand=brand;
     }
-
     //to get brand
     string get_brand(){
         return brand;
     }
-
     // Virtual function for polymorphism
     virtual void display_info() {
         cout << "Brand: " << brand << ", Year: " << year << endl;
     }
 }
 
+//derived class 
 class Electric_car: public car {
-
 private:
     int battery_life;
-
 public:
-
     //constructor
     Electric_car (string band, int year, int battery_life):  Car(band, year) {
-       
         this->battery_life=battery_life;
     }
-
     // Destructor for Electric_car
     ~Electric_car() {
         cout << "Electric_car destructor called!" << endl;
     }
-
     // other functions
-
     //overiding display_info
     void display_info(){
         cout << "Brand: " << brand << ", Year: " << year << ", Battery Life: " << battery_life << " hours" << endl;
     }
-
 }
+'''
 
 ### Memory Management
 - Use 'new/delete' when working in C++ and dealing with objects, as it properly handles constructors and destructors.
