@@ -7,90 +7,90 @@
 #### vector: 
 ##### initialization
 - default initialization: `vector<int> v`;
-- size initialization: vector`<int>`v(size, value);
-- copy initialization: vector`<int>`v_copy(v);
+- size initialization: `vector<int>v(size, value)`;
+- copy initialization: `vector<int>v_copy(v)`;
 ##### access
-- access element: v[i];
-- access element with bound checking: v.at(i); 
-- first element: v.front();
-- last element: v.last();
+- access element: `v[i]`;
+- access element with bound checking: `v.at(i)`; 
+- first element: `v.front()`;
+- last element: `v.last()`;
 ##### modify
-- add the last element at the end: v.push_back(value) or v.emplace_back(value);
-- remove the last element: v.pop_back();
-- insert at position i: v.insert(v.begin()+i, val);
-- erase at position i: v.earse(v.begin()+i);
-- erase from position i to j-1: v.erase(v.begin()+i, v.begin()+j);
-- clear all the elements: v.clear();
-- swap the contents of two vectors: v1.swap(v2);
+- add the last element at the end: `v.push_back(value)` or `v.emplace_back(value)`;
+- remove the last element: `v.pop_back()`;
+- insert at position i: `v.insert(v.begin()+i, val)`;
+- erase at position i: `v.earse(v.begin()+i)`;
+- erase from position i to j-1: `v.erase(v.begin()+i, v.begin()+j)`;
+- clear all the elements: `v.clear()`;
+- swap the contents of two vectors: `v1.swap(v2)`;
 ##### iterate
-- range based for loop: for(int value: v){};
-- iterator based for loop: for(auto it = v.begin(); it!=v.end(); ++it){//*it}
+- range based for loop: `for(int value: v){}`;
+- iterator based for loop: `for(auto it = v.begin(); it!=v.end(); ++it){//*it}`;
 ##### size
-- size: v.size();
-- resize: v.resize(n);
+- size: `v.size()`;
+- resize: `v.resize(n)`;
 ##### capcity
-- capacity: v.capacity();
-- reserve: v.reserve(n);
+- capacity:`v.capacity()`;
+- reserve: `v.reserve(n)`;
 ##### sort
-- ascending order: sort(v.begin(),v.end());
-- descending order: sort(v.begin(), v.end(), greater<int>());
+- ascending order: `sort(v.begin(),v.end())`;
+- descending order: `sort(v.begin(), v.end(), greater<int>())`;
 ##### search
-- search with sorted vector: bool = binary_search(v.begin(),v.end(),target);
+- search with sorted vector: `bool = binary_search(v.begin(),v.end(),target)`;
 ##### bound
-- lower bound: auto lb = lower_bound(v.begin(), v.end(), target);
-- upper bound: auto up = upper_bound(v.begin(), v.end(), target);
+- lower bound: `auto lb = lower_bound(v.begin(), v.end(), target)`;
+- upper bound: `auto up = upper_bound(v.begin(), v.end(), target)`;
 ##### comparison
-- equality: if(v1==v2){}
-- inequality: if(v1!=v2){}
+- equality: `if(v1==v2){}`
+- inequality: `if(v1!=v2){}`
 ##### special algorithms
-- reverse: reverse(v.begin(), v.end());
-- rotate: rotate(v.begin(), v.begin()+k, v.end); //by k positions
-- unique: v.erase(unique(v.begin(),v.end()),v.end()); //remove duplication consecutive elements
-- convert to set or map: set<int> s(v.begin(),v.end()); //convert vector to set (remove duplicates, sort)
+- reverse: `reverse(v.begin(), v.end())`;
+- rotate: `rotate(v.begin(), v.begin()+k, v.end)`; //by k positions
+- unique: `v.erase(unique(v.begin(),v.end()),v.end())`; //remove duplication consecutive elements
+- convert to set or map: `set<int> s(v.begin(),v.end())`; //convert vector to set (remove duplicates, sort)
 
 #### list (double linked list):
 ##### initialization
-- default initialization: list<int> l;
-- size initialization: list<int>l(size, value);
-- copy initialization: list<int>l_copy(l);
-- initialize from an array: list<int>l(arr,arr+n);
+- default initialization: `list<int> l`;
+- size initialization: `list<int>l(size, value)`;
+- copy initialization: `list<int>l_copy(l)`;
+- initialize from an array: `list<int>l(arr,arr+n)`;
 ##### insert
-- add the element at the beginning of the list: l.push_front(value);
-- add the element at the end of the list: l.push_back(value);
-- remove the first element: l.pop_front();
-- remove the last element:l.pop_back();
-- insert before the position of iterator it: l.insert(it,value);
-- insert n elements of value before the position of iterator it: l.insert(it,n,value);
-- insert from anther range before the position of iterator it: l.insert(it,arr,arr+n);
+- add the element at the beginning of the list: `l.push_front(value)`;
+- add the element at the end of the list: `l.push_back(value)`;
+- remove the first element: `l.pop_front()`;
+- remove the last element: `l.pop_back()`;
+- insert before the position of iterator it: `l.insert(it,value)`;
+- insert n elements of value before the position of iterator it: `l.insert(it,n,value)`;
+- insert from anther range before the position of iterator it: `l.insert(it,arr,arr+n)`;
 ##### erase 
-- erase at iterator it: l.erase(it);
-- erase in a range: l.erase(it1,it2);
-- remove all the elements: l.erase();
+- erase at iterator it: `l.erase(it)`;
+- erase in a range: `l.erase(it1,it2)`;
+- remove all the elements: `l.erase()`;
 ##### access
-- access the first element: l.front();
-- access the last element: l.last();
+- access the first element: `l.front()`;
+- access the last element: `l.last()`;
 ##### iterate
-- range based for loop: for(int value: l){};
-- iterator based for loop: for(auto it = l.begin(); it!=l.end(); ++it){//*it}
-- reverse iteration: for(auto it=l.rbegin(); it!=l.rend(); ++it){//*it}
+- range based for loop: `for(int value: l){}`;
+- iterator based for loop: `for(auto it = l.begin(); it!=l.end(); ++it){//*it}`
+- reverse iteration: for(auto `it=l.rbegin(); it!=l.rend(); ++it){//*it}`
 ##### size
-- size: l.size();
-- empty: l.empty();
+- size: `l.size()`;
+- empty: `l.empty()`;
 ##### sort
-- ascending order: l.sort();
-- descending order: l.sort(greater<int>());
-- reverse the order of elements: l.reverse();
+- ascending order: `l.sort()`;
+- descending order: `l.sort(greater<int>())`;
+- reverse the order of elements: `l.reverse()`;
 ##### merge
-- merge: l1.merge(l2); //l1 merges with l2, must be sorted before merging
-- merge with custom sort: l.sort(greater<int>());  // Sorts in descending order
+- merge: `l1.merge(l2)`; //l1 merges with l2, must be sorted before merging
+- merge with custom sort: `l.sort(greater<int>())`;  // Sorts in descending order
 ##### splice
-- transfer: l1.spice(l1.end(),l2); //Transfers all elements from l2 to the end of l1
-- transfer at specific range: l1.splice(l1.end(), l2, l2.begin(), l2.end()); // Moves a range from l2 to l1
+- transfer: `l1.spice(l1.end(),l2)`; //Transfers all elements from l2 to the end of l1
+- transfer at specific range: `l1.splice(l1.end(), l2, l2.begin(), l2.end())`; // Moves a range from l2 to l1
 ##### remove
-- unique: l.uinique(); //remove consecutive duplicate elements
-- remove: l.remove(value); //remove all the elements equal to specified value
+- unique: `l.uinique()`; //remove consecutive duplicate elements
+- remove: `l.remove(value)`; //remove all the elements equal to specified value
 ##### special algorithms
-- find a specific value: auto it = find(l.begin(), l.end(), value); if(it!=l.end()){}
+- find a specific value: `auto it = find(l.begin(), l.end(), value); if(it!=l.end()){}`;
 
 #### dequeue (double ended queue):
 ##### initialization
