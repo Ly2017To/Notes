@@ -1,7 +1,7 @@
 # FPGA Voltage Standards
 
-## single-ended I/O standards: LVCOMS; LVTTL; HSTL; SSTL; PCI;
-## differential I/O standards: LVDS; RSDS; TMDS; differential HSTL and SSTL;
+### single-ended I/O standards: LVCOMS; LVTTL; HSTL; SSTL; PCI;
+### differential I/O standards: LVDS; RSDS; TMDS; differential HSTL and SSTL;
 
 ### TTL (Transistor-Transistor Logic)
 - TTL is an older logic standard, typically used in low-speed and low-power applications.
