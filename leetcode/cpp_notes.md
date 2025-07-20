@@ -1,4 +1,4 @@
-## Basic Knowledge about Class in C++
+## Basic C++
 
 ### Class
 
