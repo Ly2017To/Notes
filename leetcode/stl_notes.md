@@ -190,7 +190,7 @@
 - size: `s.size()`;
 - empty: `s.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=s.begin(); it!= s.end(); ++it){//*it}`;
+- iterator based for loop: `for(auto it=s.begin(); it!= s.end(); ++it){//*it}`;
 ##### bound
 - lower bound: it returns an iterator to the first element that is not less than the given value. `auto it = s.lower_bound(value)`; 
 - upper bound: it returns an iterator to the first element that is greater than the given value. `auto it = s.upper_bound(value)`; 
@@ -213,7 +213,7 @@
 - size: `ms.size()`;
 - empty:` ms.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=ms.begin(); it!= ms.end(); ++it){//*it}`;
+- iterator based for loop: `for(auto it=ms.begin(); it!= ms.end(); ++it){//*it}`;
 ##### bound
 - lower bound: it returns an iterator to the first element that is not less than the given value. `auto it = ms.lower_bound(value)`; 
 - upper bound: it returns an iterator to the first element that is greater than the given value. `auto it = ms.upper_bound(value)`; 
@@ -224,7 +224,7 @@
 ##### initialization
 - default initialization: `map<int, string> m`;
 ##### modify
-- add a key-value pair to a map: `m.insert(key, value)`; // if the key already exists, the value is not added.
+- add a key-value pair to a map: `m.insert({key, value})`; // if the key already exists, the value is not added. or make_pair(key,value)
 - remove the pair associated with a specific key: `m.erase(key)`;
 - returns the value associated with the key: `m.at(key)`; // it throws an out_of_range exception if the key does not exist.
 - remove all the elements in the map: `m.clear()`;
@@ -238,7 +238,7 @@
 - size: `m.size()`;
 - empty: `m.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
+- iterator based for loop: `for(auto it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
 ##### bound
 - lower bound: it returns an iterator to the first element that is not less than the specified key. `auto it = m.lower_bound(key)`; 
 - upper bound: it returns an iterator to the first element that is strictly greater than the specified key. `auto it = m.upper_bound(key)`; 
@@ -252,7 +252,7 @@
 ##### initialization
 - default initialization: `map<int, string> m`;
 ##### modify
-- add a key-value pair to a multimap:` m.insert(key, value)`; // multiple elements with the same key can be inserted.
+- add a key-value pair to a multimap:` m.insert({key, value})`; // multiple elements with the same key can be inserted. or make_pair(key,value)
 - remove all the pairs associated with a specific key: `s.erase(key)`;
 ##### find
 - it returns an iterator to the first element with the specified key, or to end() if the key is not found.
@@ -264,7 +264,7 @@
 - size: `m.size()`;
 - empty: `m.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
+- iterator based for loop: `for(auto it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
 ##### bound
 - lower bound: it returns an iterator to the first element that is not less than the specified key. `auto it = m.lower_bound(key)`; 
 - upper bound: it returns an iterator to the first element that is strictly greater than the specified key. `auto it = m.upper_bound(key)`; 
@@ -295,7 +295,7 @@
 - size: `s.size()`;
 - empty: `s.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=s.begin(); it!= s.end(); ++it){//*it}`;
+- iterator based for loop: `for(auto it=s.begin(); it!= s.end(); ++it){//*it}`;
 ##### bucket_count()
 - it returns the number of buckets used by the unordered_set for storing its elements.
 - `s.bucket_count()`;
@@ -322,7 +322,7 @@
 - size: `s.size()`;
 - empty: `s.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=s.begin(); it!= s.end(); ++it){//*it}`;
+- iterator based for loop: `for(auto it=s.begin(); it!= s.end(); ++it){//*it}`;
 ##### bucket_count()
 - it returns the number of buckets used by the unordered_set for storing its elements.
 - `s.bucket_count()`;
@@ -353,7 +353,7 @@
 - size: `m.size()`;
 - empty: `m.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
+- iterator based for loop: `for(auto it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
 ##### operator[]
 - it returns a reference to the value corresponding to the specified key. If the key doesn't exist, it inserts the key with a default value.
 - `m[key] = value`;
@@ -377,7 +377,7 @@
 - size: `m.size()`;
 - empty: `m.empty()`;
 ##### iteration
-- iterator based for loop: `for(it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
+- iterator based for loop: `for(auto it=m.begin(); it!= m.end(); ++it){cout << it->first << ": " << it->second << endl;}`;
 ##### equal_range(key)
 - it returns a pair of iterators representing the range of elements in the container that have the given key.
 - `auto range = m.equal_range(key);for (auto it = range.first; it != range.second; ++it) { cout << it->second << endl;}`;
