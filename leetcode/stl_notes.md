@@ -364,7 +364,7 @@
 ##### initialization
 - default initialization: `unordered_multimap<int, string> m`;
 ##### modify
-- add a key-value pair to a map: `m.insert(key, value)`; //  it allows multiple entries with the same key.
+- add a key-value pair to a map: `m.insert({key, value})`; //  it allows multiple entries with the same key. or make_pair(key, value)
 - remove all the pairs associated with a specific key: `m.erase(key)`;
 - remove all the elements in the map: `m.clear()`;
 ##### find
