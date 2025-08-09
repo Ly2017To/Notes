@@ -1,2 +1,4 @@
-leetcode: summary of some exercises and cpp knowledge. 
+Notes of coding and summary
+
+leetcode: summary of some exercises, C and CPP knowledge. 
 
