@@ -83,6 +83,20 @@ int linear_probing(ht_linear_probing_t * ht, int index, int key, int value)
 		i++;
 	}
 
+	int i=index-1
+
+	while(i>=0){
+		if(ht->elements[i].occupied==0){
+			ht->elements[i].occupied=1;
+			ht->elements[i].key=key;
+			ht->elements[i].value=value;
+			ht->size++;
+			ht->load_factor=(float)ht->size/(float)ht->bulk_size;
+			return SUCCESS;
+		}
+		i--;
+	}
+
 	return FAILURE;
 }
 
