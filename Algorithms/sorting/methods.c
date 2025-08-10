@@ -143,14 +143,20 @@ void counting_sort(int arr[], int size)
 
 void merge_arr(int arr[], int l, int r)
 {
-  int i,j,k;
-
-  int buff[8]={-1};
+  int i,j,k,mid;
+	
+  int * buff = malloc((r-l)*sizeof(int));
+  if(buff==NULL){
+	  printf("buff malloc error\n");
+	  return;
+  }
+	
   k=0;
   i=l;
-  j=(l+r)/2;
+  mid=l+(r-l)/2;
+  j=mid;
 
-  while(i<(l+r)/2&&j<r){
+  while(i<mid&&j<r){
     if(arr[i]<arr[j]){
       buff[k]=arr[i];
       i++;
@@ -161,7 +167,7 @@ void merge_arr(int arr[], int l, int r)
     k++;
   }
 
-  while(i<(l+r)/2){
+  while(i<mid){
     buff[k]=arr[i];
     i++;
     k++;
@@ -173,23 +179,23 @@ void merge_arr(int arr[], int l, int r)
     k++;
   }
 
-  k=0;
-  for(i=l;i<r;i++){
-    arr[i]=buff[k];
-    k++;
-  }
+  memcpy(&arr[l],buff,(r-l)*sizeof(int));
+  free(buff);
 
   return;
 }
 
 void merge_sort(int arr[], int l, int r)
 {
+  //[l,r]
   if(r-l<2){
     return;
   }
+	
+  int mid = l+(r-1)/2; //prevent overflow
 
-  merge_sort(arr,l,(l+r)/2); 
-  merge_sort(arr,(l+r)/2,r);
+  merge_sort(arr,l,mid); 
+  merge_sort(arr,mid,r);
   merge_arr(arr,l,r);
 
   return;
