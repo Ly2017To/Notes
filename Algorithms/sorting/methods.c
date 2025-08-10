@@ -187,7 +187,7 @@ void merge_arr(int arr[], int l, int r)
 
 void merge_sort(int arr[], int l, int r)
 {
-  //[l,r]
+  //[l,r)
   if(r-l<2){
     return;
   }
@@ -219,13 +219,15 @@ int partition(int arr[], int l, int r, int pivot)
 
 void quick_sort(int arr[], int l, int r)
 {
+  [l,r)
   if(r-l<2){
     return;
   }
 
   int pivot, index_partition;
 
-  pivot= arr[(l+r)/2];
+  pivot= arr[l+(r-l)/2]; //prevent overflow
+  //pivot=arr[l+rand()%(r-l)];
   index_partition = partition(arr,l,r,pivot);
 
   quick_sort(arr,l,index_partition);
