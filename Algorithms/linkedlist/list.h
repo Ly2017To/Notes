@@ -1,5 +1,4 @@
 #ifndef LIST_H
-
 #define LIST_H
 
 #define SUCCESS 0
@@ -21,3 +20,4 @@ void freeList(node_t *);
 
 
 #endif // LIST_H
+
