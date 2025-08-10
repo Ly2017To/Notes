@@ -25,7 +25,7 @@ queue_t * initialize_queue(int size)
 	}
 
 	p->size=size;
-	p->head=size-1;
+	p->head=0;
 	p->tail=0;
 
 	return p;
@@ -45,7 +45,6 @@ void enqueue(queue_t * queue, int value)
 	if(!isFull(queue)){
 		queue->buff[queue->tail%queue->size]=value;
 		queue->tail++;
-		queue->tail%=queue->size;
 	}
 
 	return;
@@ -54,29 +53,22 @@ void enqueue(queue_t * queue, int value)
 int dequeue(queue_t * queue)
 {
 	if(!isEmpty(queue)){
-		queue->head++;
-		queue->head%=queue->size;
-		return queue->buff[queue->head%queue->size];
+		int value = queue->buff[queue->head];
+		queue->head = (queue->head+1)%queue->size;
+		return value;
 	}
 	return -1;
 }
 
 int isFull(queue_t * queue)
 {
-	if(((queue->tail)%queue->size)!=(queue->head%queue->size)){
-		return 0;
-	}
-	return 1;
+	return ((queue->tail+1)%queue->size)==queue->head;
 }
 
 int isEmpty(queue_t * queue)
 {
-	if(((queue->head+1)%queue->size)!=(queue->tail%queue->size)){
-		return 0;
-	}
-	return 1;
+	return queue->tail==queue->head;
 }
-
 
 void free_queue(queue_t * queue)
 {
