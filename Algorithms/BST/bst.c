@@ -31,6 +31,7 @@ node_t * insert(node_t * node, int key)
     return (newNode(key));
   }
 
+  //pay attention where the duplicates go
   if(key<node->key){
     node->left=insert(node->left,key);
   }else{
@@ -40,6 +41,7 @@ node_t * insert(node_t * node, int key)
   return node;
 }
 
+//left, root, right
 void inorder(node_t * node)
 {
   if(node==NULL){
@@ -51,6 +53,7 @@ void inorder(node_t * node)
   inorder(node->right);
 }
 
+//root, left, right
 void preorder(node_t * node)
 {
   if(node==NULL){
@@ -62,6 +65,7 @@ void preorder(node_t * node)
   preorder(node->right);
 }
 
+//left, right, root
 void postorder(node_t * node)
 {
   if(node==NULL){
