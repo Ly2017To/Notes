@@ -1,0 +1,1 @@
+This is an implementation example of First Word Fall Through FIFO to control an led board. When data is available in the FIFO, the first word falls through the FIFO and appears automatically on the output bus.
