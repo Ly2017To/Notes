@@ -191,3 +191,99 @@ void freeBST(node_t *node){
 
   return;
 }
+
+/*
+//Traversal Binary Tree C++
+//pre-order recursion
+void preOrderTraversal(TreeNode *node)
+{
+  if(node==nullptr) return;
+  cout << node->val << endl;
+  preOrderTraversal(node->left);
+  preOrderTraversal(node->right);
+}
+
+//pre-order not recursion
+void preOrderTraversal(TreeNode *node)
+{
+  if(node==nullptr) return;
+  stack<TreeNode *> st;
+  TreeNode * curr = node;
+  
+  while(!st.empty()||curr!=nullptr){
+    
+    while(curr!=nullptr){
+      cout << curr->val << endl;
+      st.push(curr);
+      curr = curr->left;
+    }
+
+    curr = st.top();
+    st.pop();
+    curr = curr->right;
+  }
+}
+
+//in-order recursion
+void inOrderTraversal(TreeNode *node)
+{
+  if(node==nullptr) return;
+  inOrderTraversal(node->left);
+  cout << node->val << endl;
+  inOrderTraversal(node->right);
+}
+
+//in-order not recursion
+void inOrderTraversal(TreeNode *node)
+{
+  if(node==nullptr) return
+  stack<TreeNode *> st;
+  TreeNode * curr = node;
+  
+  while(!st.empty()||curr!=nullptr){
+    
+    while(curr!=nullptr){
+      st.push(curr);
+      curr= curr->left;
+    }
+    
+    curr = st.top();
+    cout << curr->val << endl;
+    st.pop();
+    curr = curr->right;
+  }
+}
+
+//post-order recursion
+void postOrderTraversal(TreeNode *node)
+{
+  if(node==nullptr) return;
+  postOrderTraversal(node->left);
+  postOrderTraversal(node->right);
+  cout << node->val << endl;
+}
+
+//post-order not recursion
+void postOrderTraversal(TreeNode *node)
+{
+  if(node==nulltpr) return;
+  stack<TreeNode *> st1, st2;
+  st1.push(node);
+  
+  while(!st1.empty()){
+
+    TreeNode *curr = st1.top(node);
+    st1.pop(node);
+    st2.push(curr);   
+
+    if(node->left) st1.push(node->left);
+    if(node->right) st1.push(node->right);
+  }
+
+  while(!st2.empty()){
+    cout<< st2.top()->val << Lendl;
+    st2.pop();
+  }
+}
+*/
+
