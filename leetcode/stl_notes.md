@@ -72,7 +72,7 @@
 ##### iterate
 - range based for loop: `for(int value: l){}`;
 - iterator based for loop: `for(auto it = l.begin(); it!=l.end(); ++it){//*it}`;
-- reverse iteration: for(auto `it=l.rbegin(); it!=l.rend(); ++it){//*it}`;
+- reverse iteration: `for(auto it=l.rbegin(); it!=l.rend(); ++it){//*it}`;
 ##### size
 - size: `l.size()`;
 - empty: `l.empty()`;
