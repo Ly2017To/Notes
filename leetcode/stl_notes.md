@@ -250,12 +250,12 @@
 - Note: an associative container that stores key-value pairs, where multiple elements with the same key to exist.  
 - The elements in a map are ordered based on the key using a balanced binary tree (like a Red-Black Tree).
 ##### initialization
-- default initialization: `map<int, string> m`;
+- default initialization: `multimap<int, string> m`;
 ##### modify
 - add a key-value pair to a multimap:` m.insert({key, value})`; // multiple elements with the same key can be inserted. or make_pair(key,value)
 - remove all the pairs associated with a specific key: `s.erase(key)`;
 ##### find
-- it returns an iterator to the first element with the specified key, or to end() if the key is not found.
+- it returns an iterator to the first element with the specified key, or to  end() if the key is not found.
 - `auto it = m.find(key)`. //check the return value here
 ##### count
 - it returns the number of elements associated with the given key.
