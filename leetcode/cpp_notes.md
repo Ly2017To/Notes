@@ -1,4 +1,4 @@
-## Basic C++
+## C/C++ Notes
 
 ### Class
 
