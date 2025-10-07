@@ -41,16 +41,16 @@ public:
     virtual void display_info() {
         cout << "Brand: " << brand << ", Year: " << year << endl;
     }
-}
+};
 
-class Electric_car: public car {
+class Electric_car: public Car {
 
 private:
     int battery_life;
 
 public:
     //constructor
-    Electric_car (string band, int year, int battery_life):  Car(band, year) {
+    Electric_car (string band, int year, int battery_life):  Car(brand, year) {
        
         this->battery_life=battery_life;
     }
@@ -67,7 +67,7 @@ public:
         cout << "Brand: " << brand << ", Year: " << year << ", Battery Life: " << battery_life << " hours" << endl;
     }
 
-}
+};
 ```
 
 ### Memory Management
