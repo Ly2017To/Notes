@@ -99,3 +99,32 @@ public:
 | **Performance**         | Faster (no overhead of object management)              | Slightly slower due to object management and dynamic resizing |
 | **Conversion**          | Convert to/from `std::string` manually                 | Can easily convert to/from C-style strings with `.c_str()` |
 | **Example Usage**       | `char str[] = "Hello";`                                | `std::string str = "Hello";`                      |
+
+### RAII
+- RAII stands for Resource Acquisition Is Initialization.
+- It is a fundamental C++ programming idiom used for automatic resource management, where the lifetime of resources (like memory, file handles, sockets, locks) is tied to the lifetime of objects.
+- Key Idea:
+    - When an object is created, it acquires some resource.
+    - When the object goes out of scope, its destructor automatically releases the resource.
+    - This ensures no resource leaks and exception safety, because resources are released even if an exception occurs.
+- How RAII Works:
+    - Constructor acquires the resource.
+    - Destructor releases the resource.
+    - Because destructors are automatically called when objects go out of scope, resource management is automatic.
+
+### qsort function
+- quick sort function in C standard library stdlib.h
+- qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const void *));
+  
+### Endianess
+- big endian: the MSB is stored at the lowest memory address
+- small endian: the LSB is stored at the lowest memory address
+```
+//a function to swap endianess
+unsigned int swap_endian(unsigned int num) {
+    return ((num >> 24) & 0xFF) | 
+           ((num << 8) & 0xFF0000) | 
+           ((num >> 8) & 0xFF00) | 
+           ((num << 24) & 0xFF000000);
+}
+```
