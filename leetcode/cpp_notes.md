@@ -87,3 +87,15 @@ public:
 | **Introduced**         | In the C standard, available since C | C++11                                 | C (but used in C++)           |
 | **Type safety**        | Not type-safe                        | Type-safe (no ambiguity)              | Not type-safe                 |
 
+### C vs. C++ String Handling
+| Feature                 | C (C-style strings)                                    | C++ (std::string)                                          |
+|-------------------------|--------------------------------------------------------|------------------------------------------------------------|
+| **Representation**      | Array of characters (e.g., `char str[] = "Hello";`)    | `std::string` class                                        |
+| **Size**                | Fixed or needs manual tracking                         | Dynamic, grows/shrinks as needed                           |
+| **Null-Termination**    | Yes (null-terminated)                                  | No, uses internal size management                          |
+| **Memory Management**   | Manual (e.g., `malloc()`/`free()`) for dynamic strings | Automatic, managed by `std::string`                        |
+| **Functionality**       | Limited (requires `<string.h>` functions)              | Rich set of member functions (e.g., `append()`, `substr()`)|
+| **Safety**              | Prone to errors like buffer overflow or invalid access | Type-safe, less prone to errors (no manual memory handling)|
+| **Performance**         | Faster (no overhead of object management)              | Slightly slower due to object management and dynamic resizing |
+| **Conversion**          | Convert to/from `std::string` manually                 | Can easily convert to/from C-style strings with `.c_str()` |
+| **Example Usage**       | `char str[] = "Hello";`                                | `std::string str = "Hello";`                      |
