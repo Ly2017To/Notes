@@ -77,3 +77,13 @@ public:
 - Use 'malloc/free' for C programming or when working with raw memory. It doesn't involve constructors or destructors, so it's suitable for non-object data allocation, such as arrays or basic types.
     - malloc doesn't call any constructors or initialize the memory (it simply allocates a raw memory block).
     - free doesn't call any destructors either.
+
+### Difference between void *, nullptr and NULL
+| Feature                | `void *`                            | `nullptr`                             | `NULL`                         |
+|------------------------|-------------------------------------|---------------------------------------|--------------------------------|
+| **Purpose**            | A generic pointer type that can point to any data type | A constant representing a null pointer | A macro used to represent a null pointer |
+| **Type**               | Can point to any type (not type-safe)           | Type `std::nullptr_t` (type-safe)     | Typically `0` or `(void *)0` (not type-safe) |
+| **Dereferencing**      | Cannot be dereferenced directly (needs casting) | Can be assigned to any pointer type   | Can be used as a null pointer but can cause ambiguity |
+| **Introduced**         | In the C standard, available since C | C++11                                 | C (but used in C++)           |
+| **Type safety**        | Not type-safe                        | Type-safe (no ambiguity)              | Not type-safe                 |
+
