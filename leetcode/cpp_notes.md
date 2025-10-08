@@ -1,5 +1,22 @@
 ## C/C++ Notes
 
+### Struct and Union
+
+| **Feature**            | **Struct**                                      | **Union**                                         |
+|------------------------|-------------------------------------------------|--------------------------------------------------|
+| **Memory Allocation**   | Allocates memory for all members separately.    | Allocates memory for the largest member only.    |
+| **Size**                | Size is the sum of sizes of all members, plus padding for alignment. | Size is the size of the largest member, plus padding for alignment. |
+| **Access**              | All members can be accessed independently.      | Only one member can be accessed at a time.       |
+| **Use Case**            | Used when you need to store multiple data types independently. | Used when you need to store multiple data types in the same memory location, but only one at a time. |
+| **Memory Efficiency**   | Less memory efficient as it stores all members. | More memory efficient as it stores only the largest member. |
+| **Initialization**      | Can initialize all members separately.          | Only the first member is initialized; others are overwritten when accessed. |
+| **Example**             | `struct Student { int age; float height; };`    | `union Data { int i; float f; };`               |
+
+### Key Differences (with Alignment Considerations):
+1. **Memory Allocation**: A `struct` reserves memory for each of its members with proper alignment, while a `union` uses a single memory location shared by all its members. This makes unions more memory efficient when only one of the members is needed at a time, but both `struct` and `union` sizes are impacted by alignment rules.
+2. **Access**: In a `struct`, each member can be accessed independently, but in a `union`, accessing one member overwrites the others.
+3. **Size**: The size of a `struct` is the sum of its members (with any required padding for alignment), while the size of a `union` is the size of its largest member (also including any padding for alignment).
+
 ### Class
 
 - Inheritance allows a derived class to inherit attributes and methods from a base class, enabling reuse of code.
@@ -111,6 +128,22 @@ public:
     - Constructor acquires the resource.
     - Destructor releases the resource.
     - Because destructors are automatically called when objects go out of scope, resource management is automatic.
+
+### Smart Pointers:
+- **`unique_ptr`**: Best for exclusive ownership with automatic memory management and no copying.
+- **`shared_ptr`**: Ideal when shared ownership is needed, but involves reference counting overhead.
+- **`weak_ptr`**: Used to avoid circular references, providing a non-owning reference that doesn't affect the lifetime of the object.
+
+| Feature               | **`std::unique_ptr`**                                      | **`std::shared_ptr`**                                       | **`std::weak_ptr`**                                         |
+|-----------------------|------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| **Ownership**          | Exclusive ownership (only one `unique_ptr` can own the object). | Shared ownership (multiple `shared_ptr`s can own the same object). | Non-owning reference to an object managed by `shared_ptr`.   |
+| **Memory Management**  | Automatically deletes the object when the `unique_ptr` goes out of scope. | Automatically deletes the object when the last `shared_ptr` goes out of scope. | Does not affect the lifetime of the object. Can check the object's validity using `lock()`. |
+| **Copying**            | Cannot be copied; can only be moved (ownership is transferred). | Can be copied (shared ownership). | Cannot be copied; can be converted to `shared_ptr` via `lock()`. |
+| **Usage**              | Used when an object has a single owner and needs exclusive access. | Used when multiple parts of code need shared ownership of an object. | Used to prevent circular references or to observe an object without extending its lifetime. |
+| **Reference Count**    | No reference counting; single owner.                      | Uses reference counting to track the number of owners.     | No reference counting; does not contribute to the reference count. |
+| **Performance**        | Lightweight with no overhead (preferred for unique ownership scenarios). | Can have performance overhead due to reference counting.    | No overhead if not locked, but converting to `shared_ptr` introduces overhead. |
+| **Nullptr Safety**     | Ensures the object is always valid until it goes out of scope. | Ensures the object is always valid as long as at least one `shared_ptr` exists. | Can be empty, and requires `lock()` to convert to `shared_ptr` before usage. |
+| **Common Use Case**    | Resource management where the object is exclusively owned by one part of the program. | Resource management where multiple parts of the program need to access the same object. | Avoiding circular dependencies, observing an object without extending its lifetime. |
 
 ### qsort function
 - quick sort function in C standard library stdlib.h
