@@ -1,9 +1,9 @@
 ## STL Notes
-
+---
 ### Sequence Containers
 - Sequence containers store elements in a linear sequence, allowing elements to be accessed in a specific order. 
 - They are designed to maintain the order of the elements and allow efficient insertion and removal of elements at both ends or within the sequence.
-
+---
 #### vector: 
 ##### initialization
 - default initialization: `vector<int> v`;
@@ -47,7 +47,7 @@
 - rotate: `rotate(v.begin(), v.begin()+k, v.end)`; //by k positions
 - unique: `v.erase(unique(v.begin(),v.end()),v.end())`; //remove duplication consecutive elements
 - convert to set or map: `set<int> s(v.begin(),v.end())`; //convert vector to set (remove duplicates, sort)
-
+---
 #### list (double linked list):
 ##### initialization
 - default initialization: `list<int> l`;
@@ -91,7 +91,7 @@
 - remove: `l.remove(value)`; //remove all the elements equal to specified value
 ##### special algorithms
 - find a specific value: `auto it = find(l.begin(), l.end(), value); if(it!=l.end()){}`;
-
+---
 #### dequeue (double ended queue):
 ##### initialization
 - default initialization: `deque<int> dq`;
@@ -123,11 +123,11 @@
 - assign: `dq.assign(n, value)`;  // Assigns n elements with the given value
 - find a specific value: `auto it = find(dq.begin(), dq.end(), value); if(it!=dq.end()){}`;
 - swap: `dq1.swap(dq2)`;
-
+---
 ### Container Adaptors
 - Container adapters are wrappers around other container types, providing a simplified or specialized interface to the underlying container. 
 - They are designed to provide a restricted set of operations based on the behavior required for specific tasks.
-
+---
 #### stack (LIFO):
 ##### initialization
 - default initialization: `stack<int> st`;
@@ -139,7 +139,7 @@
 ##### size
 - size: `st.size()`;
 - empty: `st.empty()`;
-
+---
 #### queue (FIFO):
 - default initialization: `queue<int> q`;
 ##### modify
@@ -151,7 +151,7 @@
 ##### size
 - size: `q.size()`;
 - empty: `q.empty()`;
-
+---
 #### priority queue (heap based data structure):
 ##### initialization
 - default initialization: `priority_queue<int> pq`;
@@ -166,11 +166,11 @@
 ##### properties
 - max heap by default
 - min heap: `priority_queue<int, vector<int>, greater<int>>` minHeap;
-
+---
 ### Associative Containers
 - Associative containers store data in such a way that elements can be quickly searched, inserted, and deleted based on a key. 
 - These containers automatically organize elements to provide fast access to individual elements using a key (usually via a sorted structure).
-
+---
 #### set 
 - Note: a sorted container that stores unique elements, and it is typically implemented using a balanced binary tree (like a Red-Black Tree).
 - The elements in a set are always sorted according to the specified comparison function (by default, in ascending order).
@@ -194,7 +194,7 @@
 ##### bound
 - lower bound: it returns an iterator to the first element that is not less than the given value. `auto it = s.lower_bound(value)`; 
 - upper bound: it returns an iterator to the first element that is greater than the given value. `auto it = s.upper_bound(value)`; 
-
+---
 #### multiset:
 - Note: it is similar to a set, but unlike set, it allows duplicate elements. It is also implemented using a balanced binary tree (like a Red-Black Tree), but the key difference is that it stores multiple occurrences of an element.
 ##### initialization
@@ -217,7 +217,7 @@
 ##### bound
 - lower bound: it returns an iterator to the first element that is not less than the given value. `auto it = ms.lower_bound(value)`; 
 - upper bound: it returns an iterator to the first element that is greater than the given value. `auto it = ms.upper_bound(value)`; 
-
+---
 #### map:
 - Note: an associative container that stores key-value pairs, where each key is unique.  
 - The elements in a map are ordered based on the key using a balanced binary tree (like a Red-Black Tree).
@@ -245,7 +245,7 @@
 ##### operator[]
 - it returns a reference to the value corresponding to the specified key. If the key doesn't exist, it inserts the key with a default value.
 - `m[key] = value`;
-
+---
 #### multimap:
 - Note: an associative container that stores key-value pairs, where multiple elements with the same key to exist.  
 - The elements in a map are ordered based on the key using a balanced binary tree (like a Red-Black Tree).
@@ -271,11 +271,11 @@
 ##### equal_range(key)
 - it returns a pair of iterators representing the range of elements in the container that have the given key.
 - `auto range = m.equal_range(key);for (auto it = range.first; it != range.second; ++it) { cout << it->second << endl;}`;
-
+---
 ### Unordered Associative Containers
 - Unordered associative containers also store key-value pairs but do not guarantee any specific order for the elements. 
 - These containers typically use hash tables for fast lookups, inserts, and deletes.
-
+---
 #### unordered_set:
 - Note: it is an associative container that stores unique elements with no specific order. 
 - It uses hashing to provide average constant time complexity for many operations, making it very efficient for problems that involve frequent lookups, insertions, or deletions.
@@ -302,7 +302,7 @@
 ##### load_factor()
 - it returns the average number of elements per bucket (helps to understand if rehashing is needed).
 - `s.load_factor()`;
-
+---
 #### unordered_multiset:
 - Note: itis similar to the unordered_set, but it allows multiple instances of the same element (i.e., it can store duplicates).
 - It uses a hash table for storage, providing average constant time complexity for many operations like insertions, deletions, and lookups. 
@@ -332,7 +332,7 @@
 ##### equal_range()
 - it returns a pair of iterators representing the range of elements equal to value. 
 - `auto range = s.equal_range(value); for (auto it = range.first; it != range.second; ++it) { cout << *it << " ";}`;
-
+---
 #### unordered_map:
 - Note: it is an associative container that stores key-value pairs, where each key is unique. 
 - It provides average constant time complexity for lookups, insertions, and deletions due to its underlying hash table implementation. 
@@ -357,7 +357,7 @@
 ##### operator[]
 - it returns a reference to the value corresponding to the specified key. If the key doesn't exist, it inserts the key with a default value.
 - `m[key] = value`;
-
+---
 #### unordered_multimap:
 - Note: it is a container that stores key-value pairs, like the unordered_map. However, it allows duplicate keys. 
 - It provides average constant time complexity for lookups, insertions, and deletions due to its underlying hash table implementation. 
@@ -381,3 +381,4 @@
 ##### equal_range(key)
 - it returns a pair of iterators representing the range of elements in the container that have the given key.
 - `auto range = m.equal_range(key);for (auto it = range.first; it != range.second; ++it) { cout << it->second << endl;}`;
+- ---
