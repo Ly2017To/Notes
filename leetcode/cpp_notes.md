@@ -1,5 +1,6 @@
 ## C/C++ Notes
 
+---
 ### Struct and Union
 
 | **Feature**            | **Struct**                                      | **Union**                                         |
@@ -17,8 +18,8 @@
 2. **Access**: In a `struct`, each member can be accessed independently, but in a `union`, accessing one member overwrites the others.
 3. **Size**: The size of a `struct` is the sum of its members (with any required padding for alignment), while the size of a `union` is the size of its largest member (also including any padding for alignment).
 
+---
 ### Class
-
 - Inheritance allows a derived class to inherit attributes and methods from a base class, enabling reuse of code.
 - Polymorphism allows methods to behave differently based on the object type, even if they're called through a base class pointer or reference.
 - Virtual functions are crucial for achieving polymorphism. When a base class method is marked as virtual, the program uses the derived class method if the object is of a derived type.
@@ -87,6 +88,7 @@ public:
 };
 ```
 
+---
 ### Memory Management
 - Use 'new/delete' when working in C++ and dealing with objects, as it properly handles constructors and destructors.
     - 'new' calls the constructor of the object, ensuring proper initialization.
@@ -95,6 +97,7 @@ public:
     - malloc doesn't call any constructors or initialize the memory (it simply allocates a raw memory block).
     - free doesn't call any destructors either.
 
+---
 ### Difference between void *, nullptr and NULL
 | Feature                | `void *`                            | `nullptr`                             | `NULL`                         |
 |------------------------|-------------------------------------|---------------------------------------|--------------------------------|
@@ -104,6 +107,7 @@ public:
 | **Introduced**         | In the C standard, available since C | C++11                                 | C (but used in C++)           |
 | **Type safety**        | Not type-safe                        | Type-safe (no ambiguity)              | Not type-safe                 |
 
+---
 ### C vs. C++ String Handling
 | Feature                 | C (C-style strings)                                    | C++ (std::string)                                          |
 |-------------------------|--------------------------------------------------------|------------------------------------------------------------|
@@ -117,6 +121,7 @@ public:
 | **Conversion**          | Convert to/from `std::string` manually                 | Can easily convert to/from C-style strings with `.c_str()` |
 | **Example Usage**       | `char str[] = "Hello";`                                | `std::string str = "Hello";`                      |
 
+---
 ### RAII
 - RAII stands for Resource Acquisition Is Initialization.
 - It is a fundamental C++ programming idiom used for automatic resource management, where the lifetime of resources (like memory, file handles, sockets, locks) is tied to the lifetime of objects.
@@ -129,6 +134,7 @@ public:
     - Destructor releases the resource.
     - Because destructors are automatically called when objects go out of scope, resource management is automatic.
 
+---
 ### Smart Pointers:
 - **`unique_ptr`**: Best for exclusive ownership with automatic memory management and no copying.
 - **`shared_ptr`**: Ideal when shared ownership is needed, but involves reference counting overhead.
@@ -145,10 +151,12 @@ public:
 | **Nullptr Safety**     | Ensures the object is always valid until it goes out of scope. | Ensures the object is always valid as long as at least one `shared_ptr` exists. | Can be empty, and requires `lock()` to convert to `shared_ptr` before usage. |
 | **Common Use Case**    | Resource management where the object is exclusively owned by one part of the program. | Resource management where multiple parts of the program need to access the same object. | Avoiding circular dependencies, observing an object without extending its lifetime. |
 
+---
 ### qsort function
 - quick sort function in C standard library stdlib.h
 - qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const void *));
-  
+
+---  
 ### Endianess
 - big endian: the MSB is stored at the lowest memory address
 - small endian: the LSB is stored at the lowest memory address
@@ -161,3 +169,5 @@ unsigned int swap_endian(unsigned int num) {
            ((num << 24) & 0xFF000000);
 }
 ```
+
+---
