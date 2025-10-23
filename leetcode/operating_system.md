@@ -753,7 +753,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 - **Soft Links (Symbolic Links)**: A reference to another file. If the original file is deleted, the symbolic link becomes broken.
 
 ---
-### File System Features**
+### **File System Features**
 
 #### **Journaling**
 - **Journaling** helps maintain file system integrity by keeping track of changes before they are committed. It helps recover from crashes or power failures.
