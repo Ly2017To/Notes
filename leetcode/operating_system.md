@@ -225,7 +225,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 - Useful in **distributed systems** where load balancing and fairness are critical.
 
 ---
-### 10. **Weighted Fair Queuing (WFQ)**
+### **Weighted Fair Queuing (WFQ)**
 - WFQ is a packet scheduling algorithm that divides available bandwidth according to weighted priorities. Each process is given a "weight," and the system allocates CPU time based on the relative weights of processes.
 
 #### **Advantages**:
@@ -472,7 +472,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 | **LFU**             | Replaces the least frequently accessed page.                       | Good for long-term access patterns | Complex to implement and maintain    |
 
 ---
-### Synchronization**
+### **Synchronization**
 - refers to the coordination of processes or threads in a concurrent system, ensuring that resources are shared safely and efficiently. Without synchronization, concurrent processes may lead to race conditions, data inconsistency, or corruption.
 
 ### **Key Concepts:**
@@ -500,7 +500,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 - **Starvation**: When a thread is perpetually denied access to a resource because others are favored.
 
 ---
-### Deadlock**
+### **Deadlock**
 - is a situation in concurrent systems where a set of processes are blocked, each waiting for resources held by the other, and none of them can proceed. It is a fundamental problem in multi-threaded and multi-process systems.
 
 ### **Conditions for Deadlock:**
@@ -636,7 +636,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 
 ---
 
-### File Systems**
+### **File Systems**
 - **file system** is a method or structure used by an operating system to store, organize, and manage files on storage devices such as hard drives, SSDs, or USB drives. It provides a way to store and retrieve data efficiently.
 
 #### **Key Functions of a File System:**
@@ -647,7 +647,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 - **Security and Permissions**: Controlling access to files by users and groups.
 
 ---
-### Types of File Systems**
+### **Types of File Systems**
 
 #### **FAT (File Allocation Table)**
 - **Overview**: One of the oldest file systems used in DOS and early versions of Windows.
@@ -755,14 +755,14 @@ A **thread** is the smallest unit of execution within a process. It represents a
 ---
 ### File System Features**
 
-#### Journaling**
+#### **Journaling**
 - **Journaling** helps maintain file system integrity by keeping track of changes before they are committed. It helps recover from crashes or power failures.
 
-#### Permissions and Security**
+#### **Permissions and Security**
 - **File Permissions**: Control access to files and directories using read, write, and execute permissions for the owner, group, and others.
 - **Access Control Lists (ACLs)**: More granular control over file permissions, allowing different users and groups to have different levels of access.
 
-### **5.3. Disk Quotas**
+#### **Disk Quotas**
 - **Disk Quotas**: Used to limit the amount of disk space a user or group can consume. This helps manage resources on shared systems.
 
 ---
