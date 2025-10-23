@@ -314,19 +314,19 @@ A **thread** is the smallest unit of execution within a process. It represents a
 ---
 ### Memory Management Strategies
 
-#### First Fit**
+#### **First Fit**
    - Allocate the first available block of memory that fits.
    
    **Real-World Example**:
    - Allocating memory for user input fields in a form on a website. The first memory block that fits the data size is chosen.
 
-#### Best Fit**
+#### **Best Fit**
    - Allocate the smallest available block of memory that fits.
    
    **Real-World Example**:
    - In a cloud storage system, the smallest available storage space is used for saving small files to avoid wasting large amounts of unused space.
 
-#### Worst Fit**
+#### **Worst Fit**
    - Allocate the largest available block of memory.
    
    **Real-World Example**:
