@@ -1,4 +1,58 @@
 ## C/C++ Notes
+---
+### Key Concepts in C:
+- **Variables & Data Types**: int, char, float, double, pointers, arrays, structures, etc.
+- **Control Structures**: if-else, switch, loops (for, while, do-while).
+- **Functions**: Definition, Declaration, Return types, Parameters, Recursion.
+- **Pointers**: Memory addresses, dereferencing, pointer arithmetic, function pointers.
+- **Memory Management**: malloc(), free(), calloc(), realloc().
+- **Arrays**: Static, dynamic arrays, multidimensional arrays.
+- **String Manipulation**: strcpy(), strcat(), strcmp(), strlen(), etc.
+
+---
+### Key Concepts in C++:
+- **Classes & Objects**: Object-oriented programming basics in C++.
+- **Constructors & Destructors**: Initialization and cleanup in classes.
+- **Operator Overloading**: Custom behavior for operators.
+- **Inheritance**: Single, multiple, and virtual inheritance.
+- **Polymorphism**: Function overloading (static), overriding (dynamic), and virtual functions.
+- **Encapsulation & Abstraction**: Hiding implementation details.
+- **Templates**: Function templates, class templates for generic programming.
+- **Exception Handling**: try, catch, throw, custom exception classes.
+
+---
+### Callback Functions
+- A **callback function** is a function passed as an argument to another function. The receiving function can then call the callback function at a certain point in its execution, enabling flexibility and modularity.
+- Callback functions allow functions to be passed as arguments.
+- They are often used to handle events, signals, or asynchronous operations.
+    - Asynchronous Operations: Callbacks allow functions to perform operations asynchronously and notify the caller when the task is completed.
+    - Event Handling: In event-driven programming, callbacks are used to handle events like mouse clicks, key presses, etc.
+    - Custom Behavior: Pass different callback functions to customize the behavior of a function, such as sorting with different comparison functions.
+- In C, callbacks are typically implemented using **function pointers**. To declare a function pointer, you specify the return type, the pointer syntax, and the function parameters. To declare a function that accepts a callback, you define a **function pointer** in the parameter list of the function.
+```c
+return_type (*pointer_name)(parameter_types); //declare a function pointer
+func_ptr = function_name;  // Assign function to pointer
+void myFunction(void (*callback)(parameter_types)); //a function accepts a callback
+```
+
+---
+### qsort function
+- quick sort function in C standard library stdlib.h
+- qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const void *));
+
+---
+### Endianess
+- big endian: the MSB is stored at the lowest memory address
+- small endian: the LSB is stored at the lowest memory address
+```
+//a function to swap endianess
+unsigned int swap_endian(unsigned int num) {
+    return ((num >> 24) & 0xFF) | 
+           ((num << 8) & 0xFF0000) | 
+           ((num >> 8) & 0xFF00) | 
+           ((num << 24) & 0xFF000000);
+}
+```
 
 ---
 ### Struct and Union
@@ -13,6 +67,7 @@
 | **Initialization**      | Can initialize all members separately.          | Only the first member is initialized; others are overwritten when accessed. |
 | **Example**             | `struct Student { int age; float height; };`    | `union Data { int i; float f; };`               |
 
+---
 ### Key Differences (with Alignment Considerations):
 1. **Memory Allocation**: A `struct` reserves memory for each of its members with proper alignment, while a `union` uses a single memory location shared by all its members. This makes unions more memory efficient when only one of the members is needed at a time, but both `struct` and `union` sizes are impacted by alignment rules.
 2. **Access**: In a `struct`, each member can be accessed independently, but in a `union`, accessing one member overwrites the others.
@@ -97,7 +152,6 @@ public:
     - malloc doesn't call any constructors or initialize the memory (it simply allocates a raw memory block).
     - free doesn't call any destructors either.
 
----
 ### Difference between void *, nullptr and NULL
 | Feature                | `void *`                            | `nullptr`                             | `NULL`                         |
 |------------------------|-------------------------------------|---------------------------------------|--------------------------------|
@@ -135,6 +189,23 @@ public:
     - Because destructors are automatically called when objects go out of scope, resource management is automatic.
 
 ---
+### Comparison of Pointer vs. Reference in C++
+| **Feature**             | **Pointer**                                                | **Reference**                                              |
+|-------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| **Definition**          | A pointer is a variable that holds the memory address of another variable. | A reference is an alias (alternative name) for an existing variable. |
+| **Initialization**      | Must be explicitly initialized to point to a variable (can be `nullptr`). | Must be initialized when declared (cannot be null or uninitialized). |
+| **Re-assignment**       | Can be reassigned to point to a different variable or `nullptr`. | Cannot be reassigned once it's bound to a variable.        |
+| **Memory Address**      | Stores the memory address of another variable.            | Does not store an address; it’s simply an alias to another variable. |
+| **Nullability**         | Can be `nullptr`, meaning it doesn't point to anything.   | Cannot be null; always refers to an existing object.       |
+| **Syntax**              | `int* ptr = &x;`                                           | `int& ref = x;`                                            |
+| **Dereferencing**       | Requires explicit dereferencing using `*` (e.g., `*ptr = 10;`). | Directly used like the variable itself (no need for `*`).   |
+| **Memory Size**         | Typically stores a memory address (usually 4 or 8 bytes, depending on platform). | Typically does not take additional memory (size is the same as the referred variable). |
+| **Use in Functions**    | Can be passed to functions to modify the pointed-to object (can be `nullptr`). | Used to pass arguments by reference, ensuring modifications on the actual variable. |
+| **Example of Use**      | Used for dynamic memory allocation (`new/delete`), array access, and traversing data structures. | Used for passing large objects efficiently (no copies), function chaining, and operator overloading. |
+| **Use in Arrays**       | A pointer can be used to iterate over array elements.     | A reference is often used when passing arrays to functions to avoid copying. |
+| **Memory Management**   | Pointers require manual memory management (e.g., `new/delete` or `malloc/free`). | No need for manual memory management (automatically cleaned up when out of scope). |
+
+---
 ### Smart Pointers:
 - **`unique_ptr`**: Best for exclusive ownership with automatic memory management and no copying.
 - **`shared_ptr`**: Ideal when shared ownership is needed, but involves reference counting overhead.
@@ -152,22 +223,6 @@ public:
 | **Common Use Case**    | Resource management where the object is exclusively owned by one part of the program. | Resource management where multiple parts of the program need to access the same object. | Avoiding circular dependencies, observing an object without extending its lifetime. |
 
 ---
-### qsort function
-- quick sort function in C standard library stdlib.h
-- qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const void *));
 
----  
-### Endianess
-- big endian: the MSB is stored at the lowest memory address
-- small endian: the LSB is stored at the lowest memory address
-```
-//a function to swap endianess
-unsigned int swap_endian(unsigned int num) {
-    return ((num >> 24) & 0xFF) | 
-           ((num << 8) & 0xFF0000) | 
-           ((num >> 8) & 0xFF00) | 
-           ((num << 24) & 0xFF000000);
-}
-```
 
----
+
