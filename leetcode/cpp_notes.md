@@ -142,6 +142,11 @@ public:
 
 };
 ```
+---
+### Virtual
+- Runtime Polymorphism: When a base class pointer or reference points to a derived class object, calling a virtual function will invoke the derived class's version of the method, not the base class's version, even if the pointer/reference is of the base class type.
+- Dynamic Dispatch: The decision of which function to call (base class or derived class version) is made at runtime, not at compile-time.
+- Virtual Destructor: If you have a class hierarchy and you dynamically allocate objects, it’s important to have a virtual destructor in the base class. This ensures that the derived class’s destructor is called correctly when the object is deleted through a base class pointer.
 
 ---
 ### Memory Management
