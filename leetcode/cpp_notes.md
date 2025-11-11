@@ -1,6 +1,6 @@
 ## C/C++ Notes
 ---
-### Key Concepts in C:
+### Key Concepts in C
 - **Variables & Data Types**: int, char, float, double, pointers, arrays, structures, etc.
 - **Control Structures**: if-else, switch, loops (for, while, do-while).
 - **Functions**: Definition, Declaration, Return types, Parameters, Recursion.
@@ -10,7 +10,7 @@
 - **String Manipulation**: strcpy(), strcat(), strcmp(), strlen(), etc.
 
 ---
-### Key Concepts in C++:
+### Key Concepts in C++
 - **Classes & Objects**: Object-oriented programming basics in C++.
 - **Constructors & Destructors**: Initialization and cleanup in classes.
 - **Operator Overloading**: Custom behavior for operators.
@@ -68,7 +68,7 @@ unsigned int swap_endian(unsigned int num) {
 | **Example**             | `struct Student { int age; float height; };`    | `union Data { int i; float f; };`               |
 
 ---
-### Key Differences (with Alignment Considerations):
+### Key Differences (with Alignment Considerations)
 1. **Memory Allocation**: A `struct` reserves memory for each of its members with proper alignment, while a `union` uses a single memory location shared by all its members. This makes unions more memory efficient when only one of the members is needed at a time, but both `struct` and `union` sizes are impacted by alignment rules.
 2. **Access**: In a `struct`, each member can be accessed independently, but in a `union`, accessing one member overwrites the others.
 3. **Size**: The size of a `struct` is the sum of its members (with any required padding for alignment), while the size of a `union` is the size of its largest member (also including any padding for alignment).
@@ -211,7 +211,7 @@ public:
 | **Memory Management**   | Pointers require manual memory management (e.g., `new/delete` or `malloc/free`). | No need for manual memory management (automatically cleaned up when out of scope). |
 
 ---
-### Smart Pointers:
+### Smart Pointers
 - **`unique_ptr`**: Best for exclusive ownership with automatic memory management and no copying.
 - **`shared_ptr`**: Ideal when shared ownership is needed, but involves reference counting overhead.
 - **`weak_ptr`**: Used to avoid circular references, providing a non-owning reference that doesn't affect the lifetime of the object.
