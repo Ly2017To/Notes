@@ -61,15 +61,37 @@ qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const
 
 ---
 ### Endianess
-- big endian: the MSB is stored at the lowest memory address
-- small endian: the LSB is stored at the lowest memory address
-```
+- Big Endian: the MSB is stored at the lowest memory address.
+- Small Endian: the LSB is stored at the lowest memory address.
+- Some older systems like the Motorola 68k series and certain RISC processors (e.g., SPARC) use Big Endian.
+- Most modern systems, including x86 (Intel/AMD processors), ARM (in Little Endian mode), and many embedded systems use Little Endian.
+```c
 //a function to swap endianess
 unsigned int swap_endian(unsigned int num) {
     return ((num >> 24) & 0xFF) | 
            ((num << 8) & 0xFF0000) | 
            ((num >> 8) & 0xFF00) | 
            ((num << 24) & 0xFF000000);
+}
+
+//check endianess
+#include <stdio.h>
+
+int main() {
+    union {
+        int i;
+        char c[4];
+    } test;
+
+    test.i = 0x12345678;
+
+    // Check the first byte
+    if (test.c[0] == 0x78)
+        printf("Little Endian\n");
+    else
+        printf("Big Endian\n");
+
+    return 0;
 }
 ```
 
