@@ -33,12 +33,31 @@
 return_type (*pointer_name)(parameter_types); //declare a function pointer
 func_ptr = function_name;  // Assign function to pointer
 void myFunction(void (*callback)(parameter_types)); //a function accepts a callback
-```
 
----
-### qsort function
-- quick sort function in C standard library stdlib.h
-- qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const void *));
+//simulate an asynchronous example with callback function
+#include <stdio.h>
+#include <unistd.h> // For sleep()
+
+void myCallbackFunction() {
+    printf("Callback function executed!\n");
+}
+
+// Function that takes a callback function as an argument
+void performAsyncOperation(void (*callback)()) {
+    printf("Performing asynchronous operation...\n");
+    sleep(2); // Simulate some delay
+    callback(); // Call the callback function
+}
+
+int main() {
+    // Pass the callback function to performAsyncOperation
+    performAsyncOperation(myCallbackFunction);
+    return 0;
+}
+
+//another example, quick sort function in C standard library stdlib.h
+qsort(void *base, size_t n_items, size_t size, int(*compare)(const void *, const void *));
+```
 
 ---
 ### Endianess
