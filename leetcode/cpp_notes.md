@@ -271,17 +271,20 @@ public:
 ---
 ### Lambda Expressions
 - A lambda expression in C++ is an anonymous function that can be defined directly in the code. It allows you to write small functions on the fly, especially for tasks like passing a function to algorithms or custom callbacks.
-- Basic Syntax: [capture](parameters) -> return_type { function_body }
-    - Capture Clause [capture]: Specifies which external variables can be accessed by the lambda.
-        - []: No capture (doesn't capture any external variables).
-        - [=]: Capture all external variables by value.
-        - [&]: Capture all external variables by reference.
-        - [x]: Capture variable x by value.
-        - [&x]: Capture variable x by reference.
-        - [this]: Capture the this pointer for member functions.
-    - Parameters (parameters): List of input parameters (optional).
-    - Return Type -> return_type: Specifies the return type of the lambda (optional, can be inferred).
-    - Function Body { function_body }: The code executed by the lambda.
+- Basic Syntax:  
+```cpp
+[capture](parameters) -> return_type { function_body }
+//Capture Clause [capture]: Specifies which external variables can be accessed by the lambda.
+//[]: No capture (doesn't capture any external variables).
+//[=]: Capture all external variables by value.
+//[&]: Capture all external variables by reference.
+//[x]: Capture variable x by value.
+//[&x]: Capture variable x by reference.
+//[this]: Capture the this pointer for member functions.
+//Parameters (parameters): List of input parameters (optional).
+//Return Type -> return_type: Specifies the return type of the lambda (optional, can be inferred).
+//Function Body { function_body }: The code executed by the lambda.
+```
 
 
 
