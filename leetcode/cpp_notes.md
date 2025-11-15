@@ -286,5 +286,227 @@ public:
 //Function Body { function_body }: The code executed by the lambda.
 ```
 
+---
+### Extern "C"
+-  It tells the C++ compiler to use C linkage conventions for the specified function or variable, disabling name mangling so that the function can be called from C code.
+-  Note: extern "C" cannot be used with member functions of C++ classes because member functions require object context (this pointer) that C does not have. Also, C++ class member functions are mangled, so extern "C" would not be applicable.
+-  When compiling C++ code, the extern "C" block ensures that C++ uses C-style linkage when interacting with C functions. On the other hand, when the C code is compiled, the extern "C" block is ignored since C does not have name mangling. In C, you would declare the C++ function using extern (without "C"), as C has no concept of extern "C". However, to properly call a C++ function from C, you need to declare the function with extern "C" in the C++ code to avoid name mangling. 
 
+---
+### Semaphore
+- A **semaphore** is a synchronization primitive used to control access to a shared resource in a concurrent or multi-threaded environment. It is commonly used to manage resource availability and ensure that critical sections of code are executed safely in a multithreading environment.
+- There are two types of semaphores:
+    - **Counting Semaphore**: Can have a range of values, useful when multiple resources are available.
+    - **Binary Semaphore**: Also known as a mutex, this can only take the values 0 and 1, often used for mutual exclusion.
+- **P (Proberen) operation**: Decreases the semaphore value. If the value is greater than 0, the operation proceeds. If the value is 0, the process is blocked until the value becomes greater than 0.
+- **V (Verhogen) operation**: Increases the semaphore value. If there are any processes waiting (blocked), one of them will be allowed to proceed.
+- **POSIX** semaphores are defined in `<semaphore.h>`, and typically use the following functions:
+    - `sem_init(sem_t *sem, int pshared, unsigned int value)`  
+        - Initializes the semaphore.  
+        - `pshared`: 0 for semaphores shared between threads, 1 for semaphores shared between processes.
+        - `value`: Initial value of the semaphore.
+    - `sem_wait(sem_t *sem)`  
+        - Decreases the semaphore value. If it's 0, the calling thread will block until the semaphore is greater than 0.
+    - `sem_post(sem_t *sem)`  
+        - Increases the semaphore value, potentially unblocking a waiting thread.
+    - `sem_destroy(sem_t *sem)`  
+        - Destroys the semaphore, freeing any resources associated with it.
+```c
+#include <stdio.h>
+#include <semaphore.h>
+#include <pthread.h>
+
+sem_t sem;
+
+void* thread_function(void* arg) {
+    sem_wait(&sem);
+    printf("Thread has entered critical section\n");
+    sem_post(&sem);
+    return NULL;
+}
+
+int main() {
+    pthread_t threads[2];
+    sem_init(&sem, 0, 1); // Binary semaphore
+
+    for(int i = 0; i < 2; i++) {
+        pthread_create(&threads[i], NULL, thread_function, NULL);
+    }
+
+    for(int i = 0; i < 2; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    sem_destroy(&sem);
+    return 0;
+}
+```
+
+---
+### Mutex 
+- A **mutex** is an object that ensures that only one thread can access a shared resource at a time, preventing race conditions and ensuring thread safety.
+    - **Purpose**: Prevents multiple threads from accessing shared resources simultaneously, ensuring that critical sections are protected.
+    - **Header**: `<mutex>` in C++ (C uses `pthread_mutex_t`).
+- Types of Mutex in C++
+    - **`std::mutex`**: Basic mutex, non-recursive. Once a thread locks the mutex, others must wait until it is unlocked.
+    - **`std::recursive_mutex`**: Allows the same thread to lock the mutex multiple times. The thread must unlock the mutex the same number of times it locks it.
+    - **`std::timed_mutex`**: Supports timeout. If a thread cannot acquire the mutex within a specified time, it returns `false` instead of blocking.
+    - **`std::recursive_timed_mutex`**: Combines recursive locking with the ability to set a timeout.
+    - **`std::shared_mutex`**: Allows multiple threads to read a shared resource concurrently (shared lock), but only one thread can write to it (exclusive lock).
+- Locking Mechanisms
+    - **`lock()` / `unlock()`**: Manually lock and unlock the mutex.
+    - **`try_lock()`**: Tries to lock the mutex. If the lock is unavailable, it returns `false` instead of blocking.
+- **RAII Locks**:
+    - **`std::lock_guard`**: A simple, scope-based lock. It locks the mutex when it is created and automatically unlocks it when it goes out of scope.
+    - **`std::unique_lock`**: A more flexible lock. It can lock and unlock the mutex multiple times and can be moved between threads.
+    - **`std::shared_lock`**: Used with `std::shared_mutex`, it provides read-only access and allows multiple threads to hold the lock simultaneously.
+
+```cpp
+#include <iostream>
+#include <mutex>
+#include <thread>
+
+std::mutex mtx;
+
+void print_even(int n) {
+    std::lock_guard<std::mutex> lock(mtx); // Automatically locks and unlocks
+    std::cout << n << std::endl;
+}
+
+void print_odd(int n) {
+    std::lock_guard<std::mutex> lock(mtx);
+    std::cout << n << std::endl;
+}
+
+int main() {
+    std::thread t1(print_even, 2);
+    std::thread t2(print_odd, 1);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+}
+```
+```c
+#include <pthread.h>
+#include <stdio.h>
+
+pthread_mutex_t mutex;
+
+void* print_numbers(void* arg) {
+    pthread_mutex_lock(&mutex);
+    printf("Thread %d is running\n", *(int*)arg);
+    pthread_mutex_unlock(&mutex);
+    return NULL;
+}
+
+int main() {
+    pthread_mutex_init(&mutex);
+
+    pthread_t thread1, thread2;
+    int arg1 = 1, arg2 = 2;
+
+    pthread_create(&thread1, NULL, print_numbers, &arg1);
+    pthread_create(&thread2, NULL, print_numbers, &arg2);
+
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+
+    pthread_mutex_destroy(&mutex);
+    
+    return 0;
+}
+```
+
+---
+### Conditional Variables
+- A **condition variable** is a synchronization primitive that allows threads to wait for some condition to be met before proceeding. It is typically used in conjunction with a mutex to avoid race conditions while waiting for an event or condition to occur.
+- Purpose: Allows threads to wait until a specific condition is true, and notify other threads when the condition has been met.
+- Header: <condition_variable> in C++ (C uses pthread_cond_t).
+- Key Functions for Condition Variables:
+    - **wait(lock)**: Wait until notified. The lock is automatically released while waiting.
+    - **wait(lock, predicate)**: Wait until the predicate is true. This avoids unnecessary wakeups and is more efficient.
+    - **notify_one()**: Wakes one thread that is waiting on the condition variable.
+    - **notify_all()**: Wakes all threads that are waiting on the condition variable.
+
+```cpp
+#include <iostream>
+#include <mutex>
+#include <condition_variable>
+#include <thread>
+
+std::mutex mtx;
+std::condition_variable cv;
+bool ready = false;
+
+void wait_thread() {
+    std::unique_lock<std::mutex> lock(mtx);
+    cv.wait(lock, []{ return ready; });
+    // Proceed after condition is true
+    std::cout << "Thread is proceeding\n";
+}
+
+void notify_thread() {
+    {
+        std::lock_guard<std::mutex> lock(mtx);
+        ready = true; // Set the condition to true
+    }
+    cv.notify_one(); // Wake one waiting thread
+}
+
+int main() {
+    std::thread t1(wait_thread);
+    std::thread t2(notify_thread);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+}
+```
+```c
+#include <pthread.h>
+#include <stdio.h>
+
+pthread_mutex_t mutex;
+pthread_cond_t cond;
+int ready = 0;
+
+void* wait_thread(void* arg) {
+    pthread_mutex_lock(&mutex);
+    while (!ready) { // Condition check
+        pthread_cond_wait(&cond, &mutex);
+    }
+    printf("Thread is proceeding\n");
+    pthread_mutex_unlock(&mutex);
+    return NULL;
+}
+
+void* notify_thread(void* arg) {
+    pthread_mutex_lock(&mutex);
+    ready = 1; // Condition met
+    pthread_cond_signal(&cond); // Notify waiting thread
+    pthread_mutex_unlock(&mutex);
+    return NULL;
+}
+
+int main() {
+    pthread_mutex_init(&mutex);
+    pthread_cond_init(&cond);
+
+    pthread_t t1, t2;
+
+    pthread_create(&t1, NULL, wait_thread, NULL);
+    pthread_create(&t2, NULL, notify_thread, NULL);
+
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+
+    pthread_mutex_destroy(&mutex);
+    pthread_mutex_destroy(&cond);
+
+    return 0;
+}
+```
 
