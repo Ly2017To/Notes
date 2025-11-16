@@ -487,6 +487,7 @@ void* notify_thread(void* arg) {
     pthread_mutex_lock(&mutex);
     ready = 1; // Condition met
     pthread_cond_signal(&cond); // Notify waiting thread
+    //pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&mutex);
     return NULL;
 }
