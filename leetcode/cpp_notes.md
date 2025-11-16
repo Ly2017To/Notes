@@ -492,8 +492,8 @@ void* notify_thread(void* arg) {
 }
 
 int main() {
-    pthread_mutex_init(&mutex);
-    pthread_cond_init(&cond);
+    pthread_mutex_init(&mutex, NULL);
+    pthread_cond_init(&cond, NULL);
 
     pthread_t t1, t2;
 
