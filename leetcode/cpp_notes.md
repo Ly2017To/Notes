@@ -21,6 +21,57 @@
 - **Exception Handling**: try, catch, throw, custom exception classes.
 
 ---
+### To Get Data Type in C 
+```c
+#include <stdio.h>
+
+#define BASE_TYPE_SIZE(t) printf("%12s:%2d Byte %s\n", #t, sizeof(t), sizeof(t)>1? "s":"")
+
+void base_type_size(void) {
+    // Fundamental data types
+    BASE_TYPE_SIZE(char);
+    BASE_TYPE_SIZE(signed char);
+    BASE_TYPE_SIZE(unsigned char);
+    
+    BASE_TYPE_SIZE(short);
+    BASE_TYPE_SIZE(signed short);
+    BASE_TYPE_SIZE(unsigned short);
+    
+    BASE_TYPE_SIZE(int);
+    BASE_TYPE_SIZE(signed int);
+    BASE_TYPE_SIZE(unsigned int);
+    
+    BASE_TYPE_SIZE(long);
+    BASE_TYPE_SIZE(signed long);
+    BASE_TYPE_SIZE(unsigned long);
+    
+    BASE_TYPE_SIZE(long long);
+    BASE_TYPE_SIZE(signed long long);
+    BASE_TYPE_SIZE(unsigned long long);
+    
+    BASE_TYPE_SIZE(float);
+    BASE_TYPE_SIZE(double);
+    BASE_TYPE_SIZE(long double);
+    
+    // Pointer types (sizes vary based on system architecture)
+    BASE_TYPE_SIZE(void*);
+    BASE_TYPE_SIZE(char*);
+    BASE_TYPE_SIZE(int*);
+    BASE_TYPE_SIZE(float*);
+    BASE_TYPE_SIZE(double*);
+    
+    // Other types
+    BASE_TYPE_SIZE(size_t);      // Typically used for sizes
+    BASE_TYPE_SIZE(ptrdiff_t);   // Typically used for pointer differences
+}
+
+int main() {
+    base_type_size();
+    return 0;
+}
+```
+
+---
 ### Callback Functions
 - A **callback function** is a function passed as an argument to another function. The receiving function can then call the callback function at a certain point in its execution, enabling flexibility and modularity.
 - Callback functions allow functions to be passed as arguments.
@@ -560,56 +611,6 @@ int main() {
     pthread_mutex_destroy(&mutex);
     pthread_mutex_destroy(&cond);
 
-    return 0;
-}
-```
-
-### To Get Data Type in C 
-```c
-#include <stdio.h>
-
-#define BASE_TYPE_SIZE(t) printf("%12s:%2d Byte %s\n", #t, sizeof(t), sizeof(t)>1? "s":"")
-
-void base_type_size(void) {
-    // Fundamental data types
-    BASE_TYPE_SIZE(char);
-    BASE_TYPE_SIZE(signed char);
-    BASE_TYPE_SIZE(unsigned char);
-    
-    BASE_TYPE_SIZE(short);
-    BASE_TYPE_SIZE(signed short);
-    BASE_TYPE_SIZE(unsigned short);
-    
-    BASE_TYPE_SIZE(int);
-    BASE_TYPE_SIZE(signed int);
-    BASE_TYPE_SIZE(unsigned int);
-    
-    BASE_TYPE_SIZE(long);
-    BASE_TYPE_SIZE(signed long);
-    BASE_TYPE_SIZE(unsigned long);
-    
-    BASE_TYPE_SIZE(long long);
-    BASE_TYPE_SIZE(signed long long);
-    BASE_TYPE_SIZE(unsigned long long);
-    
-    BASE_TYPE_SIZE(float);
-    BASE_TYPE_SIZE(double);
-    BASE_TYPE_SIZE(long double);
-    
-    // Pointer types (sizes vary based on system architecture)
-    BASE_TYPE_SIZE(void*);
-    BASE_TYPE_SIZE(char*);
-    BASE_TYPE_SIZE(int*);
-    BASE_TYPE_SIZE(float*);
-    BASE_TYPE_SIZE(double*);
-    
-    // Other types
-    BASE_TYPE_SIZE(size_t);      // Typically used for sizes
-    BASE_TYPE_SIZE(ptrdiff_t);   // Typically used for pointer differences
-}
-
-int main() {
-    base_type_size();
     return 0;
 }
 ```
