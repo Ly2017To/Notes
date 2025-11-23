@@ -75,6 +75,7 @@ unsigned int swap_endian(unsigned int num) {
 }
 
 //check endianess
+//example 1
 #include <stdio.h>
 
 int main() {
@@ -90,6 +91,38 @@ int main() {
         printf("Little Endian\n");
     else
         printf("Big Endian\n");
+
+    return 0;
+}
+
+//example 2 
+#include <stdio.h>
+#include <endian.h>
+
+int main() {
+    #if BYTE_ORDER == __LITTLE_ENDIAN
+        printf("Little-Endian\n");
+    #elif BYTE_ORDER == __BIG_ENDIAN
+        printf("Big-Endian\n");
+    #else
+        printf("Unknown Endian\n");
+    #endif
+
+    return 0;
+}
+
+//example 3
+#include <stdio.h>
+
+int main() {
+    unsigned int x = 1;
+    char *c = (char*)&x;
+
+    if (*c) {
+        printf("Little-Endian\n");
+    } else {
+        printf("Big-Endian\n");
+    }
 
     return 0;
 }
