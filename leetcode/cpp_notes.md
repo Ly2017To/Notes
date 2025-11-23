@@ -147,6 +147,26 @@ int main() {
 2. **Access**: In a `struct`, each member can be accessed independently, but in a `union`, accessing one member overwrites the others.
 3. **Size**: The size of a `struct` is the sum of its members (with any required padding for alignment), while the size of a `union` is the size of its largest member (also including any padding for alignment).
 
+```c
+#include <stdio.h>
+#include <stddef.h>  // For offsetof
+
+struct MyStruct {
+    char c;     // 1 byte
+    int i;      // 4 bytes (on most systems)
+    float f;    // 4 bytes (on most systems)
+};
+
+int main() {
+    // Printing the offset of each member in the structure
+    printf("Offset of 'c' in MyStruct: %zu bytes\n", offsetof(struct MyStruct, c));
+    printf("Offset of 'i' in MyStruct: %zu bytes\n", offsetof(struct MyStruct, i));
+    printf("Offset of 'f' in MyStruct: %zu bytes\n", offsetof(struct MyStruct, f));
+    
+    return 0;
+}
+```
+
 ---
 ### Class
 - Inheritance allows a derived class to inherit attributes and methods from a base class, enabling reuse of code.
