@@ -68,7 +68,7 @@
 - remove all the elements: `l.erase()`;
 ##### access
 - access the first element: `l.front()`;
-- access the last element: `l.last()`;
+- access the last element: `l.back()`;
 ##### iterate
 - range based for loop: `for(int value: l){}`;
 - iterator based for loop: `for(auto it = l.begin(); it!=l.end(); ++it){//*it}`;
