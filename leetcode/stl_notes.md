@@ -348,7 +348,7 @@
 - `auto it = m.find(key)`. //check the return value here
 ##### count
 - it returns 1 if the key exists, 0 if it doesn't.
-- `bool exists = m.count(key)`;  // returns 1 if 10 exists, 0 if not
+- `bool exists = m.count(key)`;
 ##### size
 - size: `m.size()`;
 - empty: `m.empty()`;
