@@ -1,4 +1,4 @@
-# Device Tree Summary for Interview Preparation
+# Device Tree Summary
 
 ## What is a Device Tree?
 
