@@ -118,6 +118,7 @@ A typical device tree includes the following sections:
 ## Device Tree Working Scheme
 - This diagram outlines the flow from describing hardware in the device tree to hardware initialization.
 
+```plain text
 +---------------------+
 |  Device Tree Source |
 |    (.dts file)      |
@@ -165,6 +166,7 @@ v
 |    Hardware Components     |
 |    (CPU, Memory, I/O)      |
 +----------------------------+
+``` 
 
 ## Explanation of the diagram:
 1. **Device Tree Source (DTS)**: The human-readable configuration file describing hardware.
