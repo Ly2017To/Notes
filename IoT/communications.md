@@ -125,7 +125,7 @@ P_{\text{received}} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
 $$
 
    Where:
-   - \( $P_0$ \) = **Reference power** at a reference distance \( d_0 \)
+   - \( $P_0$ \) = **Reference power** at a reference distance \( $d_0$ \)
    - \( $d_0$ \) = **Reference distance**
    - \( d \) = **Actual distance** between transmitter and receiver
    - \( n \) = **Path loss exponent** (usually between 2 and 4)
