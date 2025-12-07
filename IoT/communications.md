@@ -92,7 +92,7 @@ $$
 $$
 
 Where:
-- \( \text{FSPL} \) = **Free Space Path Loss** (in decibels, dB)
+- \( $\text{FSPL}$ \) = **Free Space Path Loss** (in decibels, dB)
 - \( d \) = **Distance** between the transmitter and receiver (in meters)
 - \( f \) = **Frequency** of the signal (in Hertz, Hz)
 - \( c \) = **Speed of light** in a vacuum (\( 3 \times 10^8 \) m/s)
