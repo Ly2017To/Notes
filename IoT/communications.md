@@ -1,6 +1,6 @@
 # Communications Summary
 
-Wireless communication refers to the transfer of information between two or more devices without the use of physical wires or cables. It involves the transmission of data via electromagnetic waves, such as radio waves, microwaves, or infrared. Here is a table summarizing the IEEE classification of frequency bands.
+The Internet of Things (IoT) refers to a network of physical objects—devices, sensors, actuators, and machines—that are interconnected through the internet or other communication networks. These objects collect and exchange data to perform tasks autonomously or to be monitored and controlled remotely. Computer networks play a critical role in enabling communication between connected devices, ensuring that they can interact, exchange data, and operate cohesively. Wireless communication refers to the transfer of information between two or more devices without the use of physical wires or cables. It involves the transmission of data via electromagnetic waves, such as radio waves, microwaves, or infrared. 
 
 ---
 
