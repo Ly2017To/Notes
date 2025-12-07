@@ -107,7 +107,7 @@ Where:
 - \( d \) = **Distance** between transmitter and receiver (in meters)
 - \( f \) = **Frequency** of the signal (in Hz)
      
-- **Multipath Propagation**: multipath propagation occurs when a signal reaches the receiver via multiple paths due to reflection, diffraction, and scattering. The **received signal power** in a multipath environment can be represented using the **Rician fading model** or **Rayleigh fading model**.
+**Multipath Propagation**: multipath propagation occurs when a signal reaches the receiver via multiple paths due to reflection, diffraction, and scattering. The **received signal power** in a multipath environment can be represented using the **Rician fading model** or **Rayleigh fading model**.
 
 **Rician Fading Model**: This model describes a scenario where there is a dominant line-of-sight (LOS) path along with reflected paths:
 
