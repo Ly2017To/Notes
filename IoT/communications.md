@@ -54,8 +54,8 @@ The Internet of Things (IoT) refers to a network of physical objects — devices
 - The maximum data rate a communication channel can support, defined by **Shannon-Hartley theorem**, given by the formula:
 
 $$
-C = B \log_2 (1 + \text{SNR})
-$$
+C = B \cdot \log_2 (1 + \text{SNR})
+$$ 
 
 Where:
 - \( C \) = **Channel capacity** (maximum data rate) in **bits per second (bps)**
