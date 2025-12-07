@@ -125,8 +125,8 @@ P_{$\text{received}$} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
 $$
 
    Where:
-   - \( P_0 \) = **Reference power** at a reference distance \( d_0 \)
-   - \( d_0 \) = **Reference distance**
+   - \( $P_0$ \) = **Reference power** at a reference distance \( d_0 \)
+   - \( $d_0$ \) = **Reference distance**
    - \( d \) = **Actual distance** between transmitter and receiver
    - \( n \) = **Path loss exponent** (usually between 2 and 4)
 
@@ -137,11 +137,11 @@ P_r = P_t \cdot \left( \frac{G_t G_r \lambda^2}{(4 \pi d)^2} \right)
 $$
 
 Where:
-- \( P_r \) = **Received power** at the receiver (in watts, W)
-- \( P_t \) = **Transmitted power** from the transmitter (in watts, W)
-- \( G_t \) = **Gain of the transmitting antenna** (dimensionless, usually in linear scale)
-- \( G_r \) = **Gain of the receiving antenna** (dimensionless, usually in linear scale)
-- \( \lambda \) = **Wavelength** of the signal (in meters, m)
+- \( $P_r$ \) = **Received power** at the receiver (in watts, W)
+- \( $P_t$ \) = **Transmitted power** from the transmitter (in watts, W)
+- \( $G_t$ \) = **Gain of the transmitting antenna** (dimensionless, usually in linear scale)
+- \( $G_r$ \) = **Gain of the receiving antenna** (dimensionless, usually in linear scale)
+- \( $\lambda$ \) = **Wavelength** of the signal (in meters, m)
 - \( d \) = **Distance** between the transmitting and receiving antennas (in meters, m)
 
 ---
