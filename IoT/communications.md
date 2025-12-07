@@ -109,9 +109,8 @@ Where:
      
 - **Multipath Propagation**: multipath propagation occurs when a signal reaches the receiver via multiple paths due to reflection, diffraction, and scattering. The **received signal power** in a multipath environment can be represented using the **Rician fading model** or **Rayleigh fading model**.
 
-1. **Rician Fading Model**:
-   The **Rician fading** describes a scenario where there is a dominant line-of-sight (LOS) path along with reflected paths:
-
+1. **Rician Fading Model**: This model describes a scenario where there is a dominant line-of-sight (LOS) path along with reflected paths:
+   
    $$
    \text{Received Power} = P_{\text{LOS}} \cdot (1 + K)
    $$
@@ -120,9 +119,8 @@ Where:
    - \( P_{\text{LOS}} \) = **Line-of-sight power** (dominant signal)
    - \( K \) = **Rician factor** (ratio of the power in the line-of-sight path to the scattered power)
 
-2. **Rayleigh Fading Model**:
-   In the **Rayleigh fading** model, there is no line-of-sight (LOS) path, and the signal is scattered in all directions. The **received signal power** in Rayleigh fading follows:
-
+3. **Rayleigh Fading Model**: In the this model, there is no line-of-sight (LOS) path, and the signal is scattered in all directions. The **received signal power** in Rayleigh fading follows:
+   
    $$
    P_{\text{received}} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
    $$
