@@ -52,7 +52,8 @@ Wireless communication refers to the transfer of information between two or more
      - **Code Division Multiplexing (CDM)**: Code Division Multiplexing (CDM) is a technique that allows multiple signals to be transmitted simultaneously over the same frequency channel by assigning a unique code to each signal. The signals are spread over the entire frequency spectrum and distinguished by their unique codes. CDMA is an application example. In a Code Division Multiple Access (CDMA) cellular network, multiple users can make phone calls or send data over the same frequency band. Each call or data transmission is assigned a unique code, which distinguishes it from other transmissions.
 
 ### channel Capacity
-- The maximum data rate a communication channel can support, defined by **Shannon-Hartley theorem**, given by the formula: 
+- The maximum data rate a communication channel can support, defined by **Shannon-Hartley theorem**, given by the formula:
+
 $$
 C = B \log_2 (1 + \text{SNR})
 $$
