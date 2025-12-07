@@ -116,13 +116,13 @@ $$
 $$
 
    Where:
-   - \( P_{\text{LOS}} \) = **Line-of-sight power** (dominant signal)
+   - \( $P_{\text{LOS}}$ \) = **Line-of-sight power** (dominant signal)
    - \( K \) = **Rician factor** (ratio of the power in the line-of-sight path to the scattered power)
 
 3. **Rayleigh Fading Model**: In the this model, there is no line-of-sight (LOS) path, and the signal is scattered in all directions. The **received signal power** in Rayleigh fading follows:
    
 $$
-P_{\text{received}} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
+P_{$\text{received}$} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
 $$
 
    Where:
