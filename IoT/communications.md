@@ -53,9 +53,9 @@ Wireless communication refers to the transfer of information between two or more
 
 ### channel Capacity
 - The maximum data rate a communication channel can support, defined by **Shannon-Hartley theorem**, given by the formula: 
-\[
+$$
 C = B \log_2 (1 + \text{SNR})
-\]
+$$
 
 Where:
 - \( C \) = **Channel capacity** (maximum data rate) in **bits per second (bps)**
