@@ -109,7 +109,7 @@ Where:
      
 - **Multipath Propagation**: multipath propagation occurs when a signal reaches the receiver via multiple paths due to reflection, diffraction, and scattering. The **received signal power** in a multipath environment can be represented using the **Rician fading model** or **Rayleigh fading model**.
 
-1. **Rician Fading Model**: This model describes a scenario where there is a dominant line-of-sight (LOS) path along with reflected paths:
+**Rician Fading Model**: This model describes a scenario where there is a dominant line-of-sight (LOS) path along with reflected paths:
 
 $$
 \text{Received Power} = P_{\text{LOS}} \cdot (1 + K)
@@ -119,7 +119,7 @@ $$
    - \( $P_{\text{LOS}}$ \) = **Line-of-sight power** (dominant signal)
    - \( K \) = **Rician factor** (ratio of the power in the line-of-sight path to the scattered power)
 
-3. **Rayleigh Fading Model**: In the this model, there is no line-of-sight (LOS) path, and the signal is scattered in all directions. The **received signal power** in Rayleigh fading follows:
+**Rayleigh Fading Model**: In the this model, there is no line-of-sight (LOS) path, and the signal is scattered in all directions. The **received signal power** in Rayleigh fading follows:
    
 $$
 P_{$\text{received}$} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
@@ -131,7 +131,7 @@ $$
    - \( d \) = **Actual distance** between transmitter and receiver
    - \( n \) = **Path loss exponent** (usually between 2 and 4)
 
-- **Friis' Transmission Equation**: This equation calculates the power received by an antenna when the power is transmitted from another antenna over a free-space path. It is used in the analysis of wireless communication systems, especially for line-of-sight propagation. The equation is given by:
+**Friis' Transmission Equation**: This equation calculates the power received by an antenna when the power is transmitted from another antenna over a free-space path. It is used in the analysis of wireless communication systems, especially for line-of-sight propagation. The equation is given by:
 
 $$
 P_r = P_t \cdot \left( \frac{G_t G_r \lambda^2}{(4 \pi d)^2} \right)
