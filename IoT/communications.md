@@ -121,7 +121,7 @@ $$
 **Rayleigh Fading Model**: In the this model, there is no line-of-sight (LOS) path, and the signal is scattered in all directions. The **received signal power** in Rayleigh fading follows:
    
 $$
-P_{$\text{received}$} = P_0 \cdot \left(\frac{d_0}{d}\right)^n
+$P_{\text{received}}$ = P_0 \cdot \left(\frac{d_0}{d}\right)^n
 $$
 
    Where:
