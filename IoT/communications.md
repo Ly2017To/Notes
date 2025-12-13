@@ -159,12 +159,43 @@ Where:
 | **Sigfox**    | Sub-GHz (868 MHz, 915 MHz) | 10-50 km (line-of-sight) | 100 bps - 600 bps   | Very Low      | Long-range, low-data rate, low-power   | Asset tracking, environmental monitoring, smart agriculture |
 | **Thread**    | 2.4 GHz               | 10-100m               | 250 Kbps            | Low                   | Mesh network for home automation       | Smart home devices, lighting, thermostats            |
 
-## Key Takeaways:
+## Notes:
 - **Wi-Fi** is suitable for high-speed, high-bandwidth IoT applications but consumes more power and has a shorter range.
+   - **Core Mechanism**: Medium-to-short-range (20–100m) wireless using 2.4GHz/5GHz (Wi-Fi 6) or 6GHz (Wi-Fi 6E/7) bands, orthogonal frequency-division multiplexing (OFDM) modulation, and MU-MIMO (Multi-User MIMO) for parallel device communication.
+   - **Key Architecture**: Star topology (AP → client devices) with IEEE 802.11 standard stack; Wi-Fi 6 (802.11ax) adds OFDMA (Orthogonal Frequency-Division Multiple Access) and Target Wake Time (TWT) for IoT efficiency; Wi-Fi 7 (802.11be) boosts speed with 4096-QAM modulation.
+   - **How It Works**: Devices associate with a wireless access point (AP) via authentication (WPA3 for security); TWT lets IoT devices schedule wake times to conserve power, while OFDMA enables simultaneous data transmission to multiple devices. Ideal for high-data-rate IoT (cameras, smart TVs, industrial sensors) needing internet connectivity.
+   
 - **Bluetooth** is commonly used for short-range, low-power applications with relatively low data transfer needs.
+   - **Core Mechanism**: Short-range (10–200m) wireless using 2.4GHz ISM band, Gaussian Frequency Shift Keying (GFSK) modulation, and adaptive frequency hopping (AFH) to avoid interference.
+   - **Key Architecture**: Dual-mode (BLE + classic Bluetooth) with a layered stack (PHY → Link Layer → Host); Bluetooth 5.4 adds Periodic Advertising with Response (PAwR) for massive low-power device connectivity and Encrypted Advertising Data (EAD) for security.
+   - **How It Works**: Devices discover each other via 3 dedicated advertising channels, establish connections on data channels, and use power-saving modes (Hold/Sniff/Park) to extend battery life. Ideal for D2D communication (wearables, smart home peripherals).
+   
 - **Zigbee** and **Z-Wave** are ideal for low-power, low-data rate applications like smart home automation and sensors.
+   - **Zigbee Core Mechanism**: Low-power mesh network (2.4GHz) built on IEEE 802.15.4, using direct sequence spread spectrum (DSSS) and CSMA/CA for channel access.
+   - **Zigbee Architecture**: Supports star/tree/mesh topologies; devices act as Full Function Devices (routers/coordinators) or Reduced Function Devices (end nodes). Uses distributed addressing (16-bit short addresses) and AODV routing for self-healing multi-hop communication.
+   - **How Zigbee Works**: A central coordinator forms the network; nodes relay data to extend range (up to 100m/node) and ensure reliability. Zigbee 3.0 adds centralized/distributed security (128-bit AES) and interoperability via the Zigbee Cluster Library (ZCL).
+   - **Z-Wave Core Mechanism**: Proprietary sub-GHz (868/908MHz) mesh protocol optimized for smart homes, with GFSK modulation and superior wall penetration.
+   - **Z-Wave Key Architecture**: Master-slave model with data rates (9.6–100kbps); supports up to 232 devices per network, with each device acting as a router/end node for self-healing connectivity.
+   - **How Z-Wave Works**: Devices communicate via multi-hop routing (30–100m indoor range); Z-Wave S2 security (128-bit AES) ensures encrypted communication. Certified for interoperability (1,700+ products) and ultra-low power (10-year battery life for sensors).
+
 - **LoRaWAN** and **Sigfox** are great for long-range, low-power applications where a small amount of data needs to be sent over a large area.
+   - **LoRa Core Mechanism**: Long-range (1–15km rural) LPWAN using Chirp Spread Spectrum (CSS) modulation (sub-GHz bands) for noise resistance and high sensitivity (-137dBm).
+   - **LoRa Architecture**: Star-of-stars topology with 4 components: end devices → gateways → network server → application server. End devices use spreading factors (SF7–SF12) to balance range/data rate.
+   - **How LoRa Works**: Devices broadcast data to gateways (no fixed association); gateways forward packets to the network server (IP-connected), which filters duplicates and optimizes data rates. LoRaWAN 2.0 adds dynamic rate adjustment and 50kbps max speed.
+   - **Sigfox Mechanism**: Ultra-long-range (up to 50km rural) UNB (100Hz bandwidth) protocol, using D-BPSK (uplink) and GFSK (downlink) modulation.
+   - **Sigfox Architecture**: Connectionless "send-and-forget" model; devices broadcast 12-byte uplink/8-byte downlink packets without acknowledgments. Uses 3D diversity (time/frequency/space) for reliability.
+   - **How Sigfox Works**: Devices transmit messages 3x on different frequencies; nearby base stations (LAPs) forward data to a central network server (LTN). Ultra-low power (10-year battery) but extremely low data rates (100–600bps) for simple monitoring.
+
 - **NB-IoT** offers a cellular solution with reliable coverage for applications needing low to medium data rates over wide areas.
+   - **Core Mechanism**: Cellular-based LPWAN (3GPP-standardized) using 180kHz narrowband in LTE/5G spectrum, integrated with existing cellular infrastructure.
+   - **Key Architecture**: Supports standalone/in-band/guard-band deployment; power-saving modes (PSM: 3–5μA sleep current; eDRX: configurable wake cycles) enable 5–10-year battery life.
+   - **How It Works**: Devices connect to cellular towers, use reduced signaling overhead, and leverage Release 17 features (satellite integration, 2048 retransmissions) for deep indoor/remote coverage. Ideal for stationary IoT (smart meters, city sensors).
+
 - **Thread** is designed for secure, low-power, and scalable mesh networks, perfect for smart homes and connected devices.
+   - **Core Mechanism**: IPv6-based 2.4GHz mesh protocol (IEEE 802.15.4) for smart homes, with 6LoWPAN header compression (40→6 bytes) for low-bandwidth links.
+   - **Key Architecture**: Self-healing mesh with 4 device roles (Leader/Router/End Device/Border Router); supports 250+ nodes and native IP connectivity.
+   - **How It Works**: Nodes communicate via multi-hop routing (50m/node); Thread 1.3 adds enhanced security (128-bit AES) and Matter standard integration for interoperability. Used for real-time smart home apps (lighting, HVAC) with sub-100ms latency.
+
+---
 
 ---
