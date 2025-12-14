@@ -196,7 +196,41 @@ Where:
    - **Key Architecture**: Self-healing mesh with 4 device roles (Leader/Router/End Device/Border Router); supports 250+ nodes and native IP connectivity.
    - **How It Works**: Nodes communicate via multi-hop routing (50m/node); Thread 1.3 adds enhanced security (128-bit AES) and Matter standard integration for interoperability. Used for real-time smart home apps (lighting, HVAC) with sub-100ms latency. Thread has become the preferred networking technology for Matter, the universal smart home connectivity standard. Matter is an application layer protocol that operates over multiple underlying networks including Wi-Fi, Ethernet, Thread, and Bluetooth Low Energy. The integration between Thread and Matter provides a seamless, secure, and scalable solution for smart home devices from different manufacturers.
 
-
 ---
+## TCP/IP
+- **TCP/IP** is essential for internet communication, enabling devices to connect and exchange data. It is structured into four layers (Application, Transport, Internet, and Network Access), each playing a crucial role in ensuring reliable, efficient communication. Understanding these layers and protocols is key for network design, troubleshooting, and maintenance.
+- **TCP** provides reliable data transfer, while **IP** handles addressing and routing.
 
+### Layers of TCP/IP Model
+The **TCP/IP model** is divided into four layers:
+- **Application Layer**
+   - * **Core Mechanism**: Provides user-facing services and defines how applications interact with the network (uses Transport/Internet layers for underlying communication).
+   - **Key Protocols (IoT/Interview-Relevant)**:
+      - **HTTP/HTTPS**: Web communication – HTTP (unencrypted, port 80); HTTPS (TLS-encrypted, port 443) for secure IoT dashboards/APIs.
+      - **MQTT (Message Queuing Telemetry Transport)**: Lightweight publish-subscribe (pub/sub) protocol for IoT – low bandwidth, ideal for sensors (e.g., temperature data from farm sensors to cloud).
+      - **CoAP (Constrained Application Protocol)**: IoT-specific HTTP alternative – designed for resource-constrained devices (e.g., smart bulbs, low-power sensors) with RESTful APIs.
+      - **DNS (Domain Name System)**: Translates human-readable domain names (e.g., [example.com](https://example.com)) to IP addresses (critical for IoT devices connecting to cloud servers).
+      - **FTP/SFTP**: File transfer – used for IoT firmware updates or bulk data uploads.
+      - **How It Works**: Applications (e.g., IoT sensors, web browsers) use these protocols to send/receive data; the protocol defines message formats, authentication (e.g., MQTT username/password), and data encoding.
+- **Transport Layer**
+   - **Core Mechanism**: Ensures reliable end-to-end data delivery between applications (compensates for IP’s unreliability).
+   - **Key Protocols**:
+      - **TCP (Transmission Control Protocol)**: *Connection-oriented, reliable, ordered* – ideal for data that can’t tolerate loss (e.g., web pages, files, IoT command/control). Works via: 3-way handshake (SYN → SYN-ACK → ACK) to establish connections; sequence numbers (ordering); acknowledgments (ACKs, for loss recovery); flow control (sliding window) and congestion control (avoids network overload); 4-way handshake to terminate connectionsv(FIN → ACK → FIN → ACK).
+      - **UDP (User Datagram Protocol)**: *Connectionless, lightweight, low-latency* – ideal for real-time or loss-tolerant data (e.g., IoT sensor streams, video/audio, DNS queries).
+      - **Tradeoffs**: No ACKs/sequence numbers (faster but unreliable); smaller header (8 bytes vs. TCP’s 20+ bytes) for low overhead.
+      - **How It Works**: TCP/UDP encapsulate Application layer data into segments/datagrams, add source/destination port numbers (to identify applications), and handle delivery guarantees (TCP) or minimal overhead (UDP).
+- **Internet Layer**
+   - **Core Mechanism**: Enables **inter-network routing** (cross-network communication) by defining global addressing and packet forwarding rules.
+   - **Key Protocols**:
+      - **IP (Internet Protocol)**: The "backbone" – IPv4 (32-bit addresses, \~4B devices) and IPv6 (128-bit addresses, unlimited scale) assign unique identifiers to devices. IP is *connectionless* and *unreliable* (no error correction or delivery guarantees).
+      - **ICMP (Internet Control Message Protocol)**: Supports network diagnostics and error reporting (e.g., ping for connectivity checks, traceroute for path mapping, "destination unreachable" messages).
+      - **IGP/EGP (Interior/Exterior Gateway Protocols)**: Routing protocols (e.g., OSPF, RIP for internal networks; BGP for internet backbone) that help routers determine optimal paths for packets.
+      - **How It Works**: IP encapsulates Transport layer segments into packets, adds source/destination IP addresses, and routers forward packets based on routing tables. ICMP supplements IP with control/error signals.
+- **Network Access Layer**
+   - **Core Mechanism**: Manages physical transmission (wired/wireless) and local network connectivity (e.g., Ethernet, Wi-Fi, Bluetooth).
+   - **Key Protocols**:
+      - **Ethernet**: Wired LAN standard (IEEE 802.3) using MAC addresses for device identification and CSMA/CD (wired) or CSMA/CA (wireless) for collision avoidance.
+      - **Wi-Fi (802.11)**: Wireless LAN protocol (covered earlier) – integrates with TCP/IP via this layer.
+      - **ARP (Address Resolution Protocol)**: Maps IPv4 addresses (Internet layer) to MAC addresses (physical layer) for local network communication.
+   - **How It Works**: Converts Internet layer packets into frames for physical transmission; handles framing, error detection (via CRC), and local delivery.
 ---
