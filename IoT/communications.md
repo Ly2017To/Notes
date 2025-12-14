@@ -281,3 +281,55 @@ The **TCP/IP model** is divided into four layers:
 - Background tasks may continue (e.g., service workers, caching, scripts).
 ---
 
+## IoT Application Layer Protocols Comparision
+
+| Protocol  | Transport Layer | Key Use Case                 | Core Advantage                  | Tradeoff                                              |
+| --------- | --------------- | ---------------------------- | ------------------------------- | ----------------------------------------------------- |
+| MQTT      | TCP             | IoT sensors/controls         | Ultra-low overhead, QoS options | Pub/sub only (no direct device-device)                |
+| CoAP      | UDP             | Constrained IoT devices      | RESTful, low power, multicast   | Less mature ecosystem than MQTT                       |
+| WebSocket | TCP             | Real-time web/IoT dashboards | Full-duplex, web-friendly       | Higher overhead than MQTT/CoAP (not for tiny sensors) |
+| HTTP      | TCP             | Web apps, IoT APIs           | Universal, easy to implement    | High overhead (request-response model)                |
+
+### MQTT (Message Queuing Telemetry Transport)
+- **Core Purpose**: Lightweight publish-subscribe (pub/sub) protocol optimized for **resource-constrained devices** (low power, limited bandwidth) – ideal for IoT sensor/controller communication.
+- **Key Architecture**: 3 components – **Publisher** (sends data, e.g., temperature sensor), **Broker** (routes messages to subscribers), **Subscriber** (receives data, e.g., cloud dashboard).
+- **Core Mechanisms**:
+   - QoS (Quality of Service) levels: QoS 0 (at-most-once, fire-and-forget), QoS 1 (at-least-once, ACK required), QoS 2 (exactly-once, 4-way handshake) – balances reliability/latency.
+   - Lightweight header (2 bytes minimum) + binary payload → minimal bandwidth usage.
+   - Retained messages (broker stores last message for new subscribers) and will messages (broker sends "device offline" alert if connection drops).
+- **How It Works**: 
+   - Publishers send messages to a topic (e.g., "farm/temp/sensor1").
+   - subscribers subscribe to topics they care about. 
+   - The broker filters and forwards messages – no direct publisher-subscriber connection (decouples devices).
+- **MQTT-SN (MQTT for Sensor Networks)**:
+   - **Purpose**: MQTT variant for **low-power wireless sensor networks** (e.g., Zigbee, LoRa) where TCP is impractical.
+   - **Key Difference**: Works over UDP instead of TCP; supports short topic names (reduces bandwidth); ideal for battery-powered sensors with limited connectivity.
+
+### CoAP (Constrained Application Protocol)
+   - **Core Purpose**: IoT-specific alternative to HTTP, designed for **constrained devices/networks** (low memory, narrow bandwidth) – follows RESTful principles.
+   - **Key Architecture**: Client-server model (like HTTP) with support for unicast/multicast; uses UDP as transport (lightweight) with optional reliability.
+   - **Core Mechanisms**:
+      - REST methods: GET (read), POST (create), PUT (update), DELETE (remove) – familiar HTTP-like interface for developers.
+      - Lightweight header (4 bytes minimum) + compact binary encoding → lower overhead than HTTP.
+      - Observe option: Subscribes to resource updates (e.g., "monitor thermostat temperature" – server pushes changes to client).
+      - Block-wise transfer: Splits large data (e.g., firmware updates) into chunks for constrained networks.
+- **How It Works**: 
+   - CoAP client (e.g., smart bulb) sends requests to a CoAP server (e.g., home gateway) using resource URIs (e.g., "coap://gateway/bulb/brightness"). 
+   - UDP provides low-latency transport.
+   - reliability is added via retransmissions/acknowledgments if needed.
+- **CoAPs (CoAP over TLS)**
+   - **Purpose**: Secure version of CoAP – adds TLS encryption for sensitive IoT data (e.g., medical device readings, smart lock commands).
+   - **Key Use Case**: Complies with security standards (e.g., GDPR, HIPAA) for IoT deployments requiring data privacy.
+
+### WebSocket
+   - **Core Purpose**: Full-duplex (bidirectional) real-time communication protocol for **web/app-to-server interactions** – eliminates HTTP’s "request-response" overhead.
+   - **Key Architecture**: Client-server model with a persistent TCP connection (upgrades from HTTP/HTTPS via a handshake).
+   - **Core Mechanisms**:
+      - Handshake: Client sends HTTP request with "Upgrade: websocket" header; server acknowledges to switch to WebSocket protocol.
+      - Full-duplex: Both client and server can send data anytime without waiting for a request (unlike HTTP).
+      - Frame-based: Data is sent in lightweight frames (header + payload) – supports text (JSON) or binary data.
+- **How It Works**: 
+   - After the HTTP-to-WebSocket upgrade, a persistent TCP connection is maintained. 
+   - Both sides send frames as needed (e.g., chat app messages, real-time IoT dashboards updating sensor data). 
+   - Connection stays open until closed by either party.
+
