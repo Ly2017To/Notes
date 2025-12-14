@@ -234,3 +234,50 @@ The **TCP/IP model** is divided into four layers:
       - **ARP (Address Resolution Protocol)**: Maps IPv4 addresses (Internet layer) to MAC addresses (physical layer) for local network communication.
    - **How It Works**: Converts Internet layer packets into frames for physical transmission; handles framing, error detection (via CRC), and local delivery.
 ---
+
+## What Happens When You Type a URL in the Browser?
+### 1. URL Parsing
+- Browser breaks the URL into its components:
+  - **Protocol** (HTTP/HTTPS)
+  - **Domain** (example.com)
+  - **Path** (/home)
+  - Optional: query string, fragment
+### 2. DNS Lookup
+- Browser checks caches (browser → OS → router).
+- If not found, it queries a DNS server to translate the domain name into an **IP address**.
+### 3. Establishing a Connection
+- Browser opens a **TCP connection** with the server using:
+  - **TCP 3-way handshake** (SYN → SYN-ACK → ACK).
+- If HTTPS:
+  - Performs **TLS/SSL handshake**.
+  - Validates server certificate.
+  - Establishes encrypted session.
+### 4. Sending the HTTP Request
+- The browser constructs an HTTP request (method, headers, body) and sends it to the server.
+- Includes headers such as:
+  - User-Agent
+  - Cookies
+  - Accepted content types
+### 5. Server Processes the Request
+- Server receives and processes the request.
+- May run backend code, databases, etc.
+- Prepares the response.
+### 6. Server Sends Response
+- Sends:
+  - **Status code** (200, 404, 301, etc.)
+  - **Headers** (Content-Type, Cache-Control)
+  - **Body** (HTML, CSS, JS, images, etc.)
+### 7. Browser Renders the Page
+- Browser parses HTML → builds **DOM**
+- Loads CSS → applies styles
+- Fetch additional sources(image, scripts)
+- Executes JavaScript
+- Displays content to the user
+### 8. Additional Resource Requests
+- Browser fetches images, CSS, JS, fonts, etc.
+- Often done in parallel using multiple connections.
+### 9. Page Load Complete
+- Page becomes interactive.
+- Background tasks may continue (e.g., service workers, caching, scripts).
+---
+
