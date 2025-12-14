@@ -316,7 +316,7 @@ The **TCP/IP model** is divided into four layers:
 - **How It Works**: 
    - CoAP client (e.g., smart bulb) sends requests to a CoAP server (e.g., home gateway) using resource URIs (e.g., "coap://gateway/bulb/brightness"). 
    - UDP provides low-latency transport.
-   - reliability is added via retransmissions/acknowledgments if needed.
+   - Reliability is added via retransmissions/acknowledgments if needed.
 - **CoAPs (CoAP over TLS)**
    - **Purpose**: Secure version of CoAP – adds TLS encryption for sensitive IoT data (e.g., medical device readings, smart lock commands).
    - **Key Use Case**: Complies with security standards (e.g., GDPR, HIPAA) for IoT deployments requiring data privacy.
