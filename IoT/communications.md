@@ -299,7 +299,7 @@ The **TCP/IP model** is divided into four layers:
    - Retained messages (broker stores last message for new subscribers) and will messages (broker sends "device offline" alert if connection drops).
 - **How It Works**: 
    - Publishers send messages to a topic (e.g., "farm/temp/sensor1").
-   - subscribers subscribe to topics they care about. 
+   - Subscribers subscribe to topics they care about. 
    - The broker filters and forwards messages – no direct publisher-subscriber connection (decouples devices).
 - **MQTT-SN (MQTT for Sensor Networks)**:
    - **Purpose**: MQTT variant for **low-power wireless sensor networks** (e.g., Zigbee, LoRa) where TCP is impractical.
