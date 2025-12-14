@@ -188,13 +188,14 @@ Where:
 
 - **NB-IoT** offers a cellular solution with reliable coverage for applications needing low to medium data rates over wide areas.
    - **Core Mechanism**: Cellular-based LPWAN (3GPP-standardized) using 180kHz narrowband in LTE/5G spectrum, integrated with existing cellular infrastructure.
-   - **Key Architecture**: Supports standalone/in-band/guard-band deployment; power-saving modes (PSM: 3–5μA sleep current; eDRX: configurable wake cycles) enable 5–10-year battery life.
+   - **Key Architecture**: Supports standalone(using GSM frequencies)/in-band(within LTE carrier)/guard-band deployment(in LTE guard bands); power-saving modes (PSM: 3–5μA sleep current; eDRX: configurable wake cycles) enable 5–10-year battery life.
    - **How It Works**: Devices connect to cellular towers, use reduced signaling overhead, and leverage Release 17 features (satellite integration, 2048 retransmissions) for deep indoor/remote coverage. Ideal for stationary IoT (smart meters, city sensors).
 
 - **Thread** is designed for secure, low-power, and scalable mesh networks, perfect for smart homes and connected devices.
    - **Core Mechanism**: IPv6-based 2.4GHz mesh protocol (IEEE 802.15.4) for smart homes, with 6LoWPAN header compression (40→6 bytes) for low-bandwidth links.
    - **Key Architecture**: Self-healing mesh with 4 device roles (Leader/Router/End Device/Border Router); supports 250+ nodes and native IP connectivity.
-   - **How It Works**: Nodes communicate via multi-hop routing (50m/node); Thread 1.3 adds enhanced security (128-bit AES) and Matter standard integration for interoperability. Used for real-time smart home apps (lighting, HVAC) with sub-100ms latency.
+   - **How It Works**: Nodes communicate via multi-hop routing (50m/node); Thread 1.3 adds enhanced security (128-bit AES) and Matter standard integration for interoperability. Used for real-time smart home apps (lighting, HVAC) with sub-100ms latency. Thread has become the preferred networking technology for Matter, the universal smart home connectivity standard. Matter is an application layer protocol that operates over multiple underlying networks including Wi-Fi, Ethernet, Thread, and Bluetooth Low Energy. The integration between Thread and Matter provides a seamless, secure, and scalable solution for smart home devices from different manufacturers.
+
 
 ---
 
