@@ -276,7 +276,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 ---
 ### Memory Management Techniques
 
-#### Paging**
+#### **Paging**
    - **Concept**: Memory is divided into fixed-size blocks called **pages**. The OS uses **page tables** to map virtual addresses to physical memory addresses.
    
    **Real-World Example**: 
@@ -288,7 +288,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
    **Disadvantages**:
    - **Internal fragmentation** may still occur (e.g., the last page may not be fully utilized).
 
-#### Segmentation**
+#### **Segmentation**
    - **Concept**: Memory is divided into variable-sized segments based on logical structures such as the code, data, stack, etc.
    
    **Real-World Example**: 
@@ -300,7 +300,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
    **Disadvantages**:
    - **External fragmentation** (unused gaps between segments).
 
-#### Virtual Memory**
+#### **Virtual Memory**
    - **Concept**: Allows processes to use more memory than physically available by swapping data between **RAM** and **disk** (via **swap space**).
 
    **Real-World Example**: 
