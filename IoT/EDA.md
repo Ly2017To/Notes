@@ -41,14 +41,14 @@ In embedded software development, a **call-back based event-driven architecture*
 
 | **Dimension**                 | **Direct Event Handler Registration**                                                                                       | **Pub/Sub with a Broker**                                                                                                                 |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Coupling**                  | Tight coupling (producer ↔ consumer): exactly which handlers are registered.- Consumers must know the producer to register. | Loose coupling (producer ↔ broker ↔ consumer): Publishers have no knowledge of subscribers. Subscribers have no knowledge of publishers. |
+| **Coupling**                  | Tight coupling (producer ↔ consumer): Exactly which handlers are registered. Consumers must know the producer to register. | Loose coupling (producer ↔ broker ↔ consumer): Publishers have no knowledge of subscribers. Subscribers have no knowledge of publishers. |
 | **Event Routing**             | Producer handles routing (iterates over and calls handlers directly).                                                       | Broker handles routing (forwards events to matching subscribers).                                                                         |
-| **Scalability**               | Poor:>- Adding new consumers requires modifying/accessing the producer.- Producers become bottlenecks as handlers grow.     | Excellent: publishers/subscribers without touching existing components. can scale independently (e.g., distributed brokers like Kafka).   |
-| **Location Transparency**     | No (producers/consumers must share the same process/memory space—e.g., a single C program).                                 | Yes (supports distributed systems):- Publishers/subscribers can run on different machines, processes, or languages.                       |
-| **Event Filtering**           | Limited: Filtering done by the producer or in the handler (e.g., a handler checks if the event is relevant).                | Rich: filtering (subscribers can target specific event types, topics, or content).                                                        |
+| **Scalability**               | Poor: Adding new consumers requires modifying/accessing the producer. Producers become bottlenecks as handlers grow.     | Excellent: Publishers/Subscribers without touching existing components. Can scale independently (e.g., distributed brokers like Kafka).   |
+| **Location Transparency**     | No (Producers/Consumers must share the same process/memory space — e.g., a single C program).                                 | Yes (Supports distributed systems): Publishers/Subscribers can run on different machines, processes, or languages.                       |
+| **Event Filtering**           | Limited: Filtering done by the producer or in the handler (e.g., a handler checks if the event is relevant).                | Rich: Filtering (subscribers can target specific event types, topics, or content).                                                        |
 | **Multiple Producers**        | Works for 1 producer (each producer has its own handler list; shared handlers across producers are cumbersome).             | Works for multiple producers (multiple publishers can send to the same broker topic; subscribers receive all relevant events).            |
-| **Complexity**                | Simple (minimal code: function pointer lists + loop to call handlers).                                                      | More complex (requires broker implementation or third-party integration—e.g., Redis, MQTT, Kafka).                                        |
-| **Reliability & Persistence** | No built-in persistence:>- In-flight events lost if the producer crashes.>- Handlers must be re-registered on restart.      | Built-in persistence: Brokers can store events (e.g., Kafka logs) so offline subscribers don’t miss data.                                 |
+| **Complexity**                | Simple (minimal code: function pointer lists + loop to call handlers).                                                      | More complex (requires broker implementation or third-party integration — e.g., Redis, MQTT, Kafka).                                        |
+| **Reliability & Persistence** | No built-in persistence: In-flight events lost if the producer crashes. Handlers must be re-registered on restart.      | Built-in persistence: Brokers can store events (e.g., Kafka logs) so offline subscribers don’t miss data.                                 |
 | **Overhead**                  | Low (no broker latency; direct function calls).                                                                             | Moderate (broker adds minimal latency, but enables advanced features).                                                                    |
 
 ### Use Case Guidelines
@@ -62,5 +62,6 @@ In embedded software development, a **call-back based event-driven architecture*
     - Scalability is a priority (adding components without breaking existing code).
     - Event persistence, filtering, or cross-language communication is needed.
 ---
+
 
 
