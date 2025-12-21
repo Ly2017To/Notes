@@ -356,13 +356,13 @@ A **thread** is the smallest unit of execution within a process. It represents a
 ---
 ### Fragmentation
 
-#### External Fragmentation**
+#### **External Fragmentation**
    - Occurs when there is enough total free memory, but it's scattered in small blocks that cannot fit a large process.
    
    **Real-World Example**:
    - When running multiple applications on limited RAM, you might face fragmentation if processes are constantly opened and closed.
 
-#### Internal Fragmentation**
+#### **Internal Fragmentation**
    - Happens when memory is allocated in blocks larger than needed, wasting space inside the allocated block.
 
    **Real-World Example**:
