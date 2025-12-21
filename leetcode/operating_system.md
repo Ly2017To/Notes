@@ -636,7 +636,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 
 ---
 
-### **File Systems**
+### File Systems
 - **file system** is a method or structure used by an operating system to store, organize, and manage files on storage devices such as hard drives, SSDs, or USB drives. It provides a way to store and retrieve data efficiently.
 
 #### **Key Functions of a File System:**
@@ -647,7 +647,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 - **Security and Permissions**: Controlling access to files by users and groups.
 
 ---
-### **Types of File Systems**
+### Types of File Systems
 
 #### **FAT (File Allocation Table)**
 - **Overview**: One of the oldest file systems used in DOS and early versions of Windows.
@@ -714,7 +714,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
 - **Limitations**: Complexity and higher memory usage.
 
 ---
-### File System Architecture**
+### File System Architecture
 
 #### **File System Layout**
 - **Boot Sector**: Contains the bootloader and essential file system information.
@@ -732,7 +732,7 @@ A **thread** is the smallest unit of execution within a process. It represents a
   - **File Owner**
 
 ---
-### File System Operations**
+### File System Operations
 
 #### **File Creation**
 - When a file is created, the file system allocates disk space, updates metadata, and assigns a unique identifier (e.g., inode in ext file systems).
