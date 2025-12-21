@@ -41,7 +41,7 @@ In embedded software development, a **call-back based event-driven architecture*
 
 | **Dimension**                 | **Direct Event Handler Registration**                                                                                       | **Pub/Sub with a Broker**                                                                                                                 |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Coupling**                  | Tight coupling (producer ↔ consumer): exactly which handlers are registered.- Consumers must know the producer to register. | Loose coupling (producer ↔ broker ↔ consumer):- Publishers have no knowledge of subscribers. Subscribers have no knowledge of publishers. |
+| **Coupling**                  | Tight coupling (producer ↔ consumer): exactly which handlers are registered.- Consumers must know the producer to register. | Loose coupling (producer ↔ broker ↔ consumer): Publishers have no knowledge of subscribers. Subscribers have no knowledge of publishers. |
 | **Event Routing**             | Producer handles routing (iterates over and calls handlers directly).                                                       | Broker handles routing (forwards events to matching subscribers).                                                                         |
 | **Scalability**               | Poor:>- Adding new consumers requires modifying/accessing the producer.- Producers become bottlenecks as handlers grow.     | Excellent: publishers/subscribers without touching existing components. can scale independently (e.g., distributed brokers like Kafka).   |
 | **Location Transparency**     | No (producers/consumers must share the same process/memory space—e.g., a single C program).                                 | Yes (supports distributed systems):- Publishers/subscribers can run on different machines, processes, or languages.                       |
@@ -62,4 +62,5 @@ In embedded software development, a **call-back based event-driven architecture*
     - Scalability is a priority (adding components without breaking existing code).
     - Event persistence, filtering, or cross-language communication is needed.
 ---
+
 
