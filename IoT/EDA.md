@@ -35,7 +35,7 @@ In embedded software development, a **call-back based event-driven architecture*
 
 - **Direct Event Handler Registration**: Producers (event emitters) maintain a direct list of handler functions. When an event fires, the producer calls registered handlers directly.    
 - **Pub/Sub with a Broker**: A central broker mediates between publishers (producers) and subscribers (consumers). Publishers send events to the broker. Subscribers register with the broker for events—no direct producer-consumer communication.
-- **Coupling is the biggest difference**: direct registration trades flexibility for simplicity (tight coupling), while pub/sub with a broker trades minimal complexity for loose coupling, scalability, and distribution. Choose based on your application’s size, architecture (single-process vs. distributed), and need for advanced features like persistence or filtering.                                               |
+- **Coupling is the biggest difference**: direct registration trades flexibility for simplicity (tight coupling), while pub/sub with a broker trades minimal complexity for loose coupling, scalability, and distribution. Choose based on your application’s size, architecture (single-process vs. distributed), and need for advanced features like persistence or filtering.                             
 
 ### Key Differences (Detailed Comparison)
 
@@ -62,3 +62,4 @@ In embedded software development, a **call-back based event-driven architecture*
     - Scalability is a priority (adding components without breaking existing code).
     - Event persistence, filtering, or cross-language communication is needed.
 ---
+
