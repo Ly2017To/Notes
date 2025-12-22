@@ -63,5 +63,149 @@ In embedded software development, a **call-back based event-driven architecture*
     - Event persistence, filtering, or cross-language communication is needed.
 ---
 
+## EDA code example in C language
+```c
+//define the event types
+typedef enum{
+    EVENT_SENSOR_DATA_READY,
+    EVENT_BUTTON_PRESSED,
+    EVENT_TIMER_EXPIRED,
+    EVENT_UNKNOWN    
+}eventType_t;
+
+//define event data structure
+typedef struct {
+    float sensorValue;
+}sensorDataEvent_t;
+
+typedef struct {
+    int buttonId;
+}buttonPressedEvent_t;
+
+typedef struct {
+    int timerId;
+}timerExpiredEvent_t;
+
+//define event structure
+typedef struct {
+    eventType_t type;
+    time_t timestamp;
+    union{
+        sensorDataEvent_t sensorData,
+        buttonPressedEvent_t buttonPressed,
+        timerExpiredEvent_t timerExpired,
+    }data;
+    unsigned int priority;
+}event;
+
+//define the event handler call back function
+typedef void (* handler_t)(event);
+
+//define eventHandlerRegistry
+typedef struct{
+    eventType type[HANDLER_SIZE];
+    eventHandler handler[HANDLER_SIZE];
+}eventHandlerRegistry_t;
+
+//define circular buffer for event
+typedef struct{
+    event events[EVENT_QUEUE_SIZE];
+    unsigned int head;
+    unsigned int tail;
+    unsigned int count;
+}eventBuff_t;
+
+//initialize eventHandlerRegistry
+void iniEventHandlerRegistry(eventHandlerRegistry_t * pHandlerRegistry)
+{
+    int i=0; 
+    for(int i=0; i<HANDLER_SIZE>; i++){
+        pHandlerRegistry->handler[i]=NULL;
+    }
+}
+
+//initialize eventBuff
+void iniEventBuff(eventBuff_t * pEventBuff)
+{
+    pEventBuff->head=0;
+    pEventBuff->tail=0;
+    pEventBuff->count=0;
+}
+
+//event register
+bool eventRegister(event_t event, handler_t handler, eventHandlerRegistry_t * pHandlerRegistry)
+{
+    int i=0; 
+    for(int i=0; i<HANDLER_SIZE; i++){
+        if(pHandlerRegistry->handler[i]==NULL){
+            pHandlerRegistry->handler[i]=handler;
+            pHandlerRegistry->type[i]=event.type;
+            return true;
+        }
+    }
+    return false;
+}
+
+//event unregister
+void eventUnregister(event_t event, handler_t handler, eventHandlerRegistry_t * pHandlerRegistry)
+{
+    int i=0; 
+    for(int i=0; i<HANDLER_SIZE; i++){
+        if(pHandlerRegistry->event[i].type==event.type&&pHandlerRegistry->handler[i]==handler){
+            pHandlerRegistry->handler[i]=NULL;
+            return true;
+        }
+    }
+    return false;
+}
+
+//event enqueue, when an event generates
+bool eventEnqueue(event_t event, eventBuff_t * pEventBuff)
+{
+    if(pEventBuff->count>=EVENT_QUEUE_SIZE) return false;
+
+    int position = pEventBuff->tail;
+
+    if(pEventBuff->count>0){
+        while(pEventBuff->event[(position-1+EVENT_QUEUE_SIZE)%EVENT_QUEUE_SIZE].priority<event.priority){
+            position = (position-1+EVENT_QUEUE_SIZE)%EVENT_QUEUE_SIZE;
+        }
+    }
+
+    pEventBuff->event[position]=event;
+    pEventBuff->tail=(pEventBuff->tail+1)%EVENT_QUEUE_SIZE;
+    pEventBuff->count++;
+
+    return true;
+
+}
+
+//process events
+void processEvents(eventBuff_t * pEventBuff, eventHandlerRegistry_t * pHandlerRegistry)
+{   
+    event_t event;
+    int i=0;
+
+    while(pEventBuff->count>0){
+        event = pEventBuff[pEventBuff->head];
+        pEventBuff->head=(pEventBuff->head+1)%EVENT_QUEUE_SIZE;
+        pEventBuff->count--;
+        for(int i=0; i<HANDLER_SIZE; i++){
+            if(pHandlerRegistry[i].handle!=NULL&&pHandlerRegistry->event[i].type==event.type){
+                pHandlerRegistry->handler[i](event);
+            }
+        }
+    }
+}
+
+// Functions to produce events
+void ensor_produce_event(float sensorData, int priority, eventBuff_t * pEventBuff) {
+    event_t event = { .type = EVENT_SENSOR_DATA_READY, .data.sensorData = sensorData, .timestamp = time(NULL), .priority = priority };
+    eventEnqueue(event,pEventBuff);
+}
+
+```
+---
+
 
 
