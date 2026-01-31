@@ -591,7 +591,6 @@ public:
 ## 227. Basic Calculator II
 ### Problem
 Input: A string representing a mathematical expression, which may include:
-
 - Non-negative integers (e.g., 3, 12, etc.)
 - Operators: +, -, *, /
 - Whitespace characters that can be ignored.
